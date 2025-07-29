@@ -151,4 +151,110 @@ A, saadaan vähennyslaskulla:
 Eli, joukon $\{1,2,\ldots,20\}$ 4-alkioisista osajoukoista \textbf{3480} sisältää ainakin jonkin alkion joukosta $\{1, 2, 3, 4, 5\}$
 
 
+
+
+
+
+
+
+\newpage
+\exercise{4}
+
+Muodostetaan kirjaimista A--Z kolmekirjaiminen sana. Kuinka monessa sanassa kirjaimet ovat aakkosjärjestyksessä? (Kirjaimet ovat aakkosjärjestyksessä esimerkiksi sanoissa AKT ja BBC. Sanan ei siis tarvitse tarkoittaa mitään ja sama kirjain voi esiintyä useamman kerran.)
+
+\vspace{0.4cm}
+
+Merkitään kirjaimia numeroilla $x_1, x_2, x_3$, missä $x_i \in \{1, 2, \ldots, 26\}$.
+Koska kirjainten tulee olla aakkosjärjestyksessä ja samat kirjaimat on sallittuja on voimassa ehto:
+\[
+1 \le x_1 \le x_2 \le x_3 \le 26
+\]
+
+Muunentaan tämä kombinaatioksi ilman toistoja seuraalla muunnoksella:
+\begin{align*}
+y_1 &= x_1 \\
+y_2 &= x_2 + 1 \\
+y_3 &= x_3 + 2
+\end{align*}
+alkuperäinen epäyhtälöketju $x_1 \le x_2 \le x_3$ muuttuu aidosti kasvavaksi epäyhtälöketjuksi $y_1 < y_2 < y_3$\\
+
+Määritetään uusien muuttujien $y_i$ arvoalue:
+\begin{itemize}
+    \item Pienin mahdollinen arvo on $y_1 = x_1 = 1$.
+    \item Suurin mahdollinen arvo saadaan, kun $x_3=26$, jolloin $y_3 = 26 + 2 = 28$.
+\end{itemize}
+\vspace{0.4cm}
+
+\korostus{Tehtävä on siis nyt muodossa: "Kuinka monta tapaa on valita kolme eri lukua joukosta $\{1, 2, \ldots, 28\}?"$}\\
+
+Päästään peruskombinaatiomuotoon missä valitaan 3 alkiota 28:sta:
+\[
+\binom{28}{3}
+\]
+\\
+\[
+\Rightarrow \binom{28}{3} = \frac{28!}{3!(28-3)!} = \frac{28 \cdot 27 \cdot 26}{3 \cdot 2 \cdot 1} = \frac{19656}{6} = 3276
+\]
+\vspace{0.5cm}
+Siis, on olemassa \textbf{3276} erilaista kolmekirjaimista sanaa, joissa kirjaimet ovat aakkosjärjestyksessä.
+
+
+
+
+
+
+
+
+
+\newpage
+\exercise{5}
+
+$n$ henkilön joukosta valitaan $k$-henkinen komitea,
+jossa yksi henkilöistä on puheenjohtajana ($1\leq k\leq n$). 
+Montako eri komiteaa voidaan
+muodostaa, kun tulkitaan eri komiteoiksi myös ne, joissa on samat
+jäsenet, mutta eri puheenjohtaja? Laske lukumäärä valitsemalla \\
+
+
+\begin{kohta}
+  \item \textbf{ensin komitea ja sitten puheenjohtaja}
+
+  Valitaan ensin k henkilöä n:stä:
+  \[
+  \binom{n}{k}
+  \]
+  Valitusta komiteasta valitaan yksi henkilö puheenjohtajaksi:
+  \[
+  k
+  \]
+  Kokonaismäärä:
+  \[
+  \binom{n}{k} \cdot k
+  \]
+
+  \item \textbf{ensin puheenjohtaja ja sitten muut jäsenet}
+
+  Valitaan puheenjohtaja $n$ henkilöstä:
+  \[
+  n
+  \]
+  Jäljelle jää $n - 1$ henkilöä, joista valitaan $k - 1$ komitean muuta jäsentä:
+  \[
+  \binom{n-1}{k-1}
+  \]
+  Kokonaismäärä:
+  \[
+  n \cdot \binom{n-1}{k-1}
+  \]
+\end{kohta}
+
+\textbf{Näytä, että tulokset ovat samat:}
+
+\[
+\binom{n}{k} \cdot k = \frac{n!}{k!(n-k)!} \cdot k = \frac{n!}{(k-1)!(n-k)!} = n \cdot \binom{n-1}{k-1}
+\]
+
+
+
+%Vastaus: \(\binom{n}{k} \cdot k = n \cdot \binom{n-1}{k-1}\)
 \end{document}
