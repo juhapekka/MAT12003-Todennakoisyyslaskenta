@@ -50,12 +50,105 @@ Luvuista \textbf{S = \{1, 2, \ldots, 100\}} valitaan umpimähkään yksi. Millä
 \end{kohta}
 
 
+
+
+
+
+
+
+
 \newpage
-
 \exercise{2}
-Toinen tehtävä tähän.
 
+Olkoot A ja B tapahtumia.
+
+\begin{kohta}
+  \item \textbf{Lausu joukko-operaatioiden avulla seuraavat tapahtumat: Tapahtumista A ja B}
+
+  \begin{alakohta}
+    \item \textbf{sattuu molemmat:}
+    
+    \[
+    A \cap B
+    \]
+
+    \item \textbf{ei satu kumpikaan:}
+    
+    \[
+    (A \cup B)^c
+    \]
+
+    \item \textbf{sattuu ainakin yksi:}
+    
+    \[
+    A \cup B
+    \]
+
+    \item \textbf{sattuu täsmälleen yksi:}
+    
+    \[
+    (A \cup B) \setminus (A \cap B)
+    \]
+  \end{alakohta}
+
+  \item \textbf{Lausu näiden komplementtitapahtumat sanallisesti.}
+
+  \begin{alakohta}
+    \item Molempien tapahtuminen: komplementti on \textbf{"ei tapahdu molemmat"}
+    eli tapahtuu korkeintaan toinen tai ei kumpikaan.
+
+    \item Ei kumpikaan: komplementti on \textbf{"ainakin toinen tapahtuu"}.
+
+    \item Ainakin yksi: komplementti on \textbf{"ei tapahdu kumpikaan"}.
+
+    \item Täsmälleen yksi: komplementti on \textbf{"tapahtuu molemmat tai ei kumpikaan"}.
+  \end{alakohta}
+\end{kohta}
+
+
+
+
+
+
+
+
+
+
+\newpage
 \exercise{3}
-Kolmas tehtävä.
+
+Kuinka moni joukon $\{1,2,\ldots,20\}$ 4-alkioisista osajoukoista sisältää ainakin jonkin alkion joukosta $\{1, 2, 3, 4, 5\}$?\\
+
+kirjoitetaan:
+
+\begin{kuvaus}
+  \item $S$ = $\{1,2,\ldots,20\}$, koko joukko, $|S| = 20$
+  \item $A$ = $\{1, 2, 3, 4, 5\}$, joukko kiinnostavia alkioita, $|A| = 5$
+  \item $B$ joukon $S$ ne alkiot, jotka \emph{eivät} ole joukossa
+  $A$: $B = S \setminus A$, jolloin $|B| = 15$
+\end{kuvaus}
+
+Kaikkia nelialkioisia osajoukkoja on:
+
+\[
+\binom{20}{4}
+\]
+\\
+Niistä ne, jotka eivät sisällä yhtään alkiota joukosta A,
+ovat ne, jotka valitaan pelkästään joukosta B:
+
+\[
+\binom{15}{4}
+\]
+\\
+Joten ne osajoukot, jotka sisältävät ainakin jonkin alkion joukosta
+A, saadaan vähennyslaskulla:
+
+\[
+\binom{20}{4} - \binom{15}{4} = 4845 - 1365 = 3480
+\]
+\\
+Eli, joukon $\{1,2,\ldots,20\}$ 4-alkioisista osajoukoista \textbf{3480} sisältää ainakin jonkin alkion joukosta $\{1, 2, 3, 4, 5\}$
+
 
 \end{document}
