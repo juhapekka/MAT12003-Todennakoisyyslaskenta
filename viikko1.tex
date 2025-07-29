@@ -1,0 +1,61 @@
+\documentclass[12pt,a4paper]{article}
+%\documentclass{article}
+\input{yhteiset-asetukset.tex}
+
+\title{MAT12003 Todennäköisyyslaskenta I — Viikko 1}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\exercise{1}
+Luvuista \textbf{S = \{1, 2, \ldots, 100\}} valitaan umpimähkään yksi. Millä todennäköisyydellä valittu luku on:
+
+\begin{kohta}
+    \item \textbf{jaollinen luvulla 13}
+    
+    Määritellään $A = \{x \in S \mid x \bmod 13 = 0\}$\\
+    Eli
+    \[
+    A = \{13, 26, 39, 52, 65, 78, 91\}, \quad |A| = 7 \text{ ja } |S| = 100
+    \]
+    \[
+    P(A) = \frac{|A|}{|S|} = \frac{7}{100}
+    \]
+
+    \item \textbf{kaksinumeroinen, mutta ei jaollinen yhdellätoista} \\
+    Määritellään
+    \begin{align*}
+        B &= \{x \in S \mid 10 \le x \le 99\} \\
+        C &= \{x \in B \mid x \bmod 11 = 0\}
+    \end{align*}
+    \[
+    \Rightarrow |B| = 90, \quad C = \{11, 22, \ldots, 99\},\quad |C| = 9
+    \]
+    Halutaan todennäköisyys, että luku kuuluu $B \setminus C$:
+    \[
+    P(B \setminus C) = \frac{|B \setminus C|}{|S|} = \frac{90 - 9}{100} = \frac{81}{100}
+    \]
+
+    \item \textbf{alkuluku?}
+
+    Määritellään $P = \{x \in S \mid x \text{ on alkuluku}\}$.
+    \[
+    P = \{2,\ 3,\ 5,\ 7,\ 11,\ 13,\ 17,\ 19,\ 23,\ 29,\ 31,\ 37,\ 41,\ 43,\ 47,\ 53,\ 59,\ 61,\ 67,\ 71,\ 73,\ 79,\ 83,\ 89,\ 97\}
+    \]
+    \[
+    |P| = 25 \quad \Rightarrow \quad P(\text{alkuluku}) = \frac{25}{100} = \frac{1}{4}
+    \]
+\end{kohta}
+
+
+\newpage
+
+\exercise{2}
+Toinen tehtävä tähän.
+
+\exercise{3}
+Kolmas tehtävä.
+
+\end{document}
