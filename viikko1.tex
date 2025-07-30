@@ -290,6 +290,196 @@ Tarkastellaan sitten oikeaa puolta
 \end{align*}
 
 Koska vasen = oikea tulokset ovat samat.
-
 \end{kohta}
+
+
+
+
+
+
+
+
+
+\newpage
+\exercise{6}
+
+Tavallisesta 52 pelikortin pakasta nostetaan 7 korttia. Millä todennäköisyydellä
+\begin{enumerate}
+\item[(a)] joukossa on vähintään yksi pata,
+\item[(b)] punaisia kortteja on ainakin kaksi enemmän kuin mustia,
+\item[(c)] joukossa on neljä samanarvoista korttia?
+\end{enumerate}
+
+\begin{kohta}
+  \item \textbf{joukossa on vähintään yksi pata,}
+
+  Lasketaan ensin kaikkien 7 kortin yhdistelmien määrä:
+  \[
+  \binom{52}{7}
+  \]
+
+  Sen jälkeen ne jaot ilman yhtään pataa.
+  Patoja on 13, joten ei-patoja on 52 - 13 = 39
+
+  Ei-patoja sisältäviä 7-kortin jakoja on:
+  \[
+  \binom{39}{7}
+  \]
+
+  Vähintään yksi pata = kaikki mahdolliset jaot – jaot joissa ei ole pataa:
+  \[
+  P(\text{vähintään yksi pata}) = 1 - \frac{\binom{39}{7}}{\binom{52}{7}}
+  \]
+
+  Pythonilla:
+    \begin{verbatim}
+      >>> import math
+      >>> print(1 - (math.comb(39, 7) / math.comb(52, 7)))
+      0.8850320470463856
+    \end{verbatim}
+
+    Eli joukossa vähintään yksi pata $\approx 0.89$ todennälöisyydellä.
+
+\begin{comment}
+  
+\begin{alakohta}
+    \item \textbf{Tapahtuma ja sen komplementti:} \\
+    A: Kädessä on vähintään yksi pata \\
+    Komplementti $A^c$: Käsi missä ei ole yhtään pataa
+
+    \item \textbf{Lasketaan komplementti tapaukset:} \\
+    Pakassa on 13 pataa ja $52 - 13 = 39$ muuta korttia. Jotta kädessä ei ole
+    yhtään pataa, kaikki 7 korttia on valitaan näistä 39 kortista.
+    \[
+    \text{Kädet ilman pataa} = \binom{39}{7} = 15380937
+    \]
+
+    \item \textbf{Lasketaan todennäköisyys:} \\
+    Komplementti tapauksen todennäköisyys on:
+    \[
+    P(A^c) = \frac{\binom{39}{7}}{\binom{52}{7}}
+    \]
+    Alkuperäisen tapauksen todennäköisyys on $P(A) = 1 - P(A^c)$.
+    \[
+    P(\text{vähintään yksi pata}) = 1 - \frac{\binom{39}{7}}{\binom{52}{7}} \approx 1 - 0.114968 = 0.885032
+    \]
+\end{alakohta}
+
+\textbf{Vastaus (a):} Todennäköisyys on $1 - \frac{\binom{39}{7}}{\binom{52}{7}} \approx 88.5\%$.
+
+\end{comment}
+
+
+
+
+\pagebreak
+  \item \textbf{punaisia kortteja on ainakin kaksi enemmän kuin mustia,}
+\begin{comment}
+  
+  \textbf{Ratkaisu:}
+
+  Punaisia kortteja on 26 (hertta + ruutu), mustia 26 (risti + pata).  
+  Nostetaan 7 korttia, ja halutaan:
+
+  \[
+  \text{Punaiset} - \text{Mustat} \ge 2
+  \quad \Leftrightarrow \quad
+  \text{Punaiset} \ge \left\lceil \frac{7 + 2}{2} \right\rceil = 5
+  \]
+
+  Eli punaisia kortteja oltava vähintään 5. Käydään läpi kaikki tapaukset:
+  \begin{alakohta}
+    \item 5 punaista, 2 mustaa
+    \item 6 punaista, 1 musta
+    \item 7 punaista, 0 mustaa
+  \end{alakohta}
+
+  Jokaisessa tapauksessa valitaan ensin punaiset ja sitten mustat:
+  \[
+  \sum_{r=5}^{7} \binom{26}{r} \cdot \binom{26}{7 - r}
+  \]
+
+  Kokonaismäärä on $\binom{52}{7}$, joten todennäköisyys:
+  \[
+  P = \frac{1}{\binom{52}{7}} \sum_{r=5}^{7} \binom{26}{r} \cdot \binom{26}{7 - r}
+  \]
+
+  \textbf{Vastaus:} \(\dfrac{\sum_{r=5}^{7} \binom{26}{r} \cdot \binom{26}{7 - r}}{\binom{52}{7}}\)
+\end{comment}
+
+Pakassa on 26 punaista ja 26 mustaa korttia. Nostetaan 7 korttia. Olkoon p punaisten ja m mustien korttien lukumäärä kädessä.
+Ehto on $p \ge m + 2$. Koska $p+m=7$, voimme ratkaista mahdolliset parit $(p, m)$:
+\begin{itemize}
+    \item Jos $p=7, m=0 \implies 7 \ge 0+2$
+    \item Jos $p=6, m=1 \implies 6 \ge 1+2$
+    \item Jos $p=5, m=2 \implies 5 \ge 2+2$
+    \item Jos $p=4, m=3 \implies 4 \not\ge 3+2$ (Ei kelpaa)
+  \end{itemize}
+Kiinnostavia tapauksia on siis kolmea tyyppiä. Lasketaan niiden lukumäärät ja summataan ne:
+
+\begin{alakohta}
+    \item \textbf{5 punaista 26:sta ja 2 mustaa 26:sta:} \\
+    \[ N_1 = \binom{26}{5} \cdot \binom{26}{2} = 65780 \cdot 325 = 21378500 \]
+
+    \item \textbf{6 punaista 26:sta ja 1 musta 26:sta:} \\
+    \[ N_2 = \binom{26}{6} \cdot \binom{26}{1} = 230230 \cdot 26 = 5985980 \]
+
+    \item \textbf{7 punaista 26:sta:} \\
+    \[ N_3 = \binom{26}{7} \cdot \binom{26}{0} = 657800 \cdot 1 = 657800 \]
+\end{alakohta}
+Kiinnostavia tapauksia on yhteensä $N_{Kiinnostava} = N_1 + N_2 + N_3 = 28022280$\\
+
+Todennäköisyys on:
+\[
+P = \frac{N_{Kiinnostava}}{\binom{52}{7}} = \frac{28022280}{133784560}
+\]
+  Pythonilla:
+    \begin{verbatim}
+      >>> print(28022280 / 133784560)
+      0.20945825138566065
+    \end{verbatim}
+
+$\Rightarrow  \dfrac{\binom{26}{5}\binom{26}{2} + \binom{26}{6}\binom{26}{1} + \binom{26}{7}}{\binom{52}{7}} \approx 0.21$.
+
+
+
+
+
+
+\pagebreak
+  \item \textbf{joukossa on neljä samanarvoista korttia?}
+
+  Valitaan ensin jokin kortin arvo (siis, vaikkapa 7), joita on 13 mahdollista.
+  Jokaista kortin arvoa kohden on 4 maata $\Rightarrow $ valitsemme kaikki 4 korttia kyseisestä arvosta:
+  \[
+  \binom{13}{1}
+  \]
+
+  Jäljelle jää 3 korttia, jotka valitaan 52-4 = 48 kortin pakasta:
+  \[
+  \binom{48}{3}
+  \]
+
+  Kokonaismäärä:
+  \[
+  \binom{13}{1} \cdot \binom{48}{3}
+  \]
+
+  Ja taas jaetaan kaikilla mahdollisilla:
+  \[
+  P = \frac{\binom{13}{1} \cdot \binom{48}{3}}{\binom{52}{7}}
+  \]
+
+    Pythonilla:
+    \begin{verbatim}
+      >>> import math
+      >>> print(13 * math.comb(48, 3) / math.comb(52, 7))
+      0.0016806722689075631
+    \end{verbatim}
+
+
+
+  Todennäköisyys on \(\dfrac{13 \cdot \binom{48}{3}}{\binom{52}{7}} \approx 0.0017\)
+\end{kohta}
+
 \end{document}
