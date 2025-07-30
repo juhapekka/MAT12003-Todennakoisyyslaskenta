@@ -213,48 +213,83 @@ $n$ henkilön joukosta valitaan $k$-henkinen komitea,
 jossa yksi henkilöistä on puheenjohtajana ($1\leq k\leq n$). 
 Montako eri komiteaa voidaan
 muodostaa, kun tulkitaan eri komiteoiksi myös ne, joissa on samat
-jäsenet, mutta eri puheenjohtaja? Laske lukumäärä valitsemalla \\
+jäsenet, mutta eri puheenjohtaja? Laske lukumäärä valitsemalla
+\begin{enumerate}
+\item[(a)] ensin komitea ja sitten puheenjohtaja, 
+\item[(b)] ensin puheenjohtaja ja sitten muut jäsenet,
+\end{enumerate} 
+ja näytä, että tulokset ovat samat.
+
+\vspace{0.4cm}
 
 
 \begin{kohta}
-  \item \textbf{ensin komitea ja sitten puheenjohtaja}
+  \item \textbf{ensin komitea ja sitten puheenjohtaja,}
 
-  Valitaan ensin k henkilöä n:stä:
-  \[
-  \binom{n}{k}
-  \]
-  Valitusta komiteasta valitaan yksi henkilö puheenjohtajaksi:
-  \[
-  k
-  \]
-  Kokonaismäärä:
-  \[
-  \binom{n}{k} \cdot k
-  \]
+\begin{alakohta}
+    \item \textbf{Valitaan k-henkinen komitea.} \\
+    Joukosta, jossa on n henkilöä, valitaan k jäsentä. Mahdollisia komiteoita on:
+    \[
+    \binom{n}{k} \text{ kpl}
+    \]
 
-  \item \textbf{ensin puheenjohtaja ja sitten muut jäsenet}
+    \item \textbf{Valitaan puheenjohtaja komitean jäsenistä.} \\
+    Valitussa komiteassa on k jäsentä ja kuka tahansa heistä voidaan valita puheenjohtajaksi. mahdollisuuksia puheenjohtajaksi on siis k kappaletta.
+\end{alakohta}
 
-  Valitaan puheenjohtaja $n$ henkilöstä:
-  \[
-  n
-  \]
-  Jäljelle jää $n - 1$ henkilöä, joista valitaan $k - 1$ komitean muuta jäsentä:
-  \[
-  \binom{n-1}{k-1}
-  \]
-  Kokonaismäärä:
-  \[
-  n \cdot \binom{n-1}{k-1}
-  \]
-\end{kohta}
-
-\textbf{Näytä, että tulokset ovat samat:}
-
+Kokonaislukumäärä saadaan kertomalla mahdollisuudet keskenään:
 \[
-\binom{n}{k} \cdot k = \frac{n!}{k!(n-k)!} \cdot k = \frac{n!}{(k-1)!(n-k)!} = n \cdot \binom{n-1}{k-1}
+\text{Tapoja yhteensä} = \binom{n}{k} \cdot k
 \]
 
 
+% -----------
+\item \textbf{ensin puheenjohtaja ja sitten muut jäsenet,}\\
+Lasketaan sama asia, mutta eri järjestysessä.
 
-%Vastaus: \(\binom{n}{k} \cdot k = n \cdot \binom{n-1}{k-1}\)
+\begin{alakohta}
+    \item \textbf{Valitaan puheenjohtaja koko joukosta.} \\
+    Joukossa on n henkilöä, joista kuka tahansa voidaan valita puheenjohtajaksi.
+    Mahdollisuuksia puheenjohtajia on siis n kappaletta.
+    
+    \item \textbf{Valitaan loput k-1 jäsentä.} \\
+    Kun puheenjohtaja on valittu, jäljelle jää n-1 henkilöä. Näistä henkilöistä
+    valiaan komitean loput k-1 jäsentä. Mahdollisuuksia tähän on:
+    \[
+    \binom{n-1}{k-1} \text{ kpl}
+    \]
+\end{alakohta}
+
+Kokonaislukumäärä on:
+\[
+\text{Tapoja yhteensä} = n \cdot \binom{n-1}{k-1}
+\]
+\pagebreak
+
+
+\subsection*{Osoitus: Tulos on sama}
+Jos molemmat laskentatavat kuvaavat samaa tilannetta, niiden on tuotettava sama tulos.
+
+Tavoite on siis näyttää että $\displaystyle \binom{n}{k} \cdot k = n \cdot \binom{n-1}{k-1}$.
+
+Tarkastellaan lausekkeen vasenta puolta
+\begin{align*}
+\text{vasen} &= \binom{n}{k} \cdot k \\
+&= \frac{n!}{k!(n-k)!} \cdot k \\
+&= \frac{n! \cdot k}{k \cdot (k-1)!(n-k)!} \\
+&= \frac{n!}{(k-1)!(n-k)!}
+\end{align*}
+
+Tarkastellaan sitten oikeaa puolta
+\begin{align*}
+\text{oikea} &= n \cdot \binom{n-1}{k-1} \\
+&= n \cdot \frac{(n-1)!}{(k-1)!((n-1)-(k-1))!} \\
+&= n \cdot \frac{(n-1)!}{(k-1)!(n-k)!} \\
+&= \frac{n \cdot (n-1)!}{(k-1)!(n-k)!} \\
+&= \frac{n!}{(k-1)!(n-k)!}
+\end{align*}
+
+Koska vasen = oikea tulokset ovat samat.
+
+\end{kohta}
 \end{document}
