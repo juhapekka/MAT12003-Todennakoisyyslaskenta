@@ -657,6 +657,41 @@ Avauskokoonpanoon pitää valita 2 hyökkääjää,
 3 keskikenttäpelaajaa ja 3 puolustajaa sekä maalivahti.
 Loput pelaajat jäävät vaihtopelaajiksi.
 Monellako tavalla avauskokoonpano voidaan valita? 
+\vspace{0.4cm}
 
+Valitaan pelaajat tehtäviin yksi rooli kerrallaan käyttäen kombinaatioita:
+
+\begin{alakohta}
+  \item Valitaan maalivahti: $\binom{15}{1}$
+  \item Valitaan hyökkääjät: $\binom{14}{2}$
+  \item Valitaan keskikenttäpelaajat: $\binom{12}{3}$
+  \item Valitaan puolustajat: $\binom{9}{3}$
+\end{alakohta}
+
+Luvut pienenevät koska joka valinnan jälkeen käytettävissä
+olevien pelaajien määrä vähenee.
+
+\[
+\text{Tapoja valita avauskokoonpano} = 
+\binom{15}{1} \cdot 
+\binom{14}{2} \cdot 
+\binom{12}{3} \cdot 
+\binom{9}{3}
+\]
+
+    Pythonilla:
+    \begin{verbatim}
+      >>> import math
+      >>> v = math.comb(15, 1)
+      >>> h = math.comb(14, 2)
+      >>> k = math.comb(12, 3)
+      >>> p = math.comb(9, 3)
+      >>> print(v * h * k * p)
+      25225200
+    \end{verbatim}
+
+
+\vspace{0.3cm}
+Avauskokoonpano voidaan valita 25225200 eri tavalla.
 
 \end{document}
