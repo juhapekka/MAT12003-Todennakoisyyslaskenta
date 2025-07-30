@@ -482,4 +482,181 @@ $\Rightarrow  \dfrac{\binom{26}{5}\binom{26}{2} + \binom{26}{6}\binom{26}{1} + \
   Todennäköisyys on \(\dfrac{13 \cdot \binom{48}{3}}{\binom{52}{7}} \approx 0.0017\)
 \end{kohta}
 
+
+
+
+
+
+
+
+
+
+\begin{comment}
+  
+\newpage
+\exercise{7}
+Laatikossa on 6 mustaa ja 8 valkoista palloa. Mikä on
+todennäköisyys, että saadaan vähintään 2 mustaa palloa, kun 
+laatikosta nostetaan 7 palloa umpimähkään
+\begin{enumerate}
+\item[(a)] takaisinpanolla,
+\item[(b)] ilman takaisinpanoa?
+\end{enumerate}
+
+\begin{kohta}
+
+  \item \textbf{takaisinpanolla,}
+
+  Takaisinpanossa jokaisella nostolla on sama jakauma:
+  $P(\text{musta}) = \frac{6}{14}$ ja $P(\text{valkoinen}) = \frac{8}{14}$
+
+  Merkitään X = mustien pallojen lukumäärä
+  Tällöin $X \sim \text{Bin}(n=7, p=6/14)$
+
+  Kiinnostaa:
+  \[
+  P(X \ge 2) = 1 - P(X = 0) - P(X = 1)
+  \]
+
+  Lasketaan nämä:
+  \[
+  P(X = k) = \binom{7}{k} \left(\frac{6}{14}\right)^k \left(\frac{8}{14}\right)^{7-k}
+  \]
+
+  \[
+  P(X \ge 2) = 1 - \binom{7}{0} \left(\frac{8}{14}\right)^7 - \binom{7}{1} \left(\frac{6}{14}\right)^1 \left(\frac{8}{14}\right)^6
+  \]
+
+  \textbf{Vastaus:} \(1 - \left(\frac{8}{14}\right)^7 - 7 \cdot \left(\frac{6}{14}\right)^1 \left(\frac{8}{14}\right)^6\)
+
+  \item \textbf{ilman takaisinpanoa}
+
+  Tämä on \textbf{hypergeometrinen jakauma}.  
+  Perusjoukossa on $N = 14$ palloa, joista $K = 6$ on mustia. Nostetaan $n = 7$ palloa ilman takaisinpanoa.  
+  Olkoon $X$ = mustien lukumäärä.
+
+  Kiinnostaa:
+  \[
+  P(X \ge 2) = 1 - P(X = 0) - P(X = 1)
+  \]
+
+  Yleinen kaava:
+  \[
+  P(X = k) = \frac{\binom{6}{k} \binom{8}{7-k}}{\binom{14}{7}}
+  \]
+
+  Sijoitetaan:
+  \[
+  P(X \ge 2) = 1 - \frac{\binom{6}{0} \binom{8}{7}}{\binom{14}{7}} - \frac{\binom{6}{1} \binom{8}{6}}{\binom{14}{7}}
+  \]
+
+  \textbf{Vastaus:} \(1 - \dfrac{\binom{6}{0} \binom{8}{7} + \binom{6}{1} \binom{8}{6}}{\binom{14}{7}}\)
+\end{kohta}
+\end{comment}
+
+
+\newpage
+\exercise{7}
+Laatikossa on 6 mustaa ja 8 valkoista palloa. Mikä on
+todennäköisyys, että saadaan vähintään 2 mustaa palloa, kun 
+laatikosta nostetaan 7 palloa umpimähkään
+\begin{enumerate}
+\item[(a)] takaisinpanolla,
+\item[(b)] ilman takaisinpanoa?
+\end{enumerate}
+
+\begin{kohta}
+
+  \item \textbf{takaisinpanolla}
+
+  Jokainen nosto on riippumaton, ja mustan pallon todennäköisyys jokaisella nostolla on
+  \[
+  P(\text{musta}) = \frac{6}{14}, \quad P(\text{valkoinen}) = \frac{8}{14}
+  \]
+
+  Mahdolliset tapaukset joissa ei tule vähintään kahta mustaa on
+  \begin{alakohta}
+    \item 7 valkoista palloa
+    \item yksi musta ja 6 valkoista
+  \end{alakohta}
+
+  Lasketaan näiden yhteistodennäköisyys:
+
+  \begin{itemize}
+    \item $P(\text{0 mustaa}) = \left(\frac{8}{14}\right)^7$
+    \item $P(\text{1 musta}) = \binom{7}{1} \cdot \left(\frac{6}{14}\right)^1 \cdot \left(\frac{8}{14}\right)^6$
+  \end{itemize}
+
+  Todennäköisyys saada vähintään kaksi mustaa on
+  \[
+  P = 1 - \left(\frac{8}{14}\right)^7 - 7 \cdot \left(\frac{6}{14}\right) \cdot \left(\frac{8}{14}\right)^6
+  \]
+
+    Pythonilla:
+    \begin{verbatim}
+      >>> valkoinen = 8 / 14
+      >>> musta = 6 / 14
+      >>> print(1 - (valkoinen ** 7) - (7 * musta * (valkoinen ** 6)))
+      0.8756591944804339
+    \end{verbatim}
+Eli todennäköisyys saada vähintään kaksi mustaa on $\approx 0.88$
+
+
+
+
+\pagebreak
+  \item \textbf{ilman takaisinpanoa}
+
+  Laatikossa on 6 mustaa ja 8 valkoista palloa, eli yhteensä 14.
+
+  Kaikkia mahdollisia 7 pallon nostoja on:
+  \[
+  \binom{14}{7}
+  \]
+
+  Tarkastellaan tilanteita, joissa ei saada vähintään kahta mustaa:
+
+  \begin{alakohta}
+    \item 0 mustaa (7 valkoista):
+    \[
+    \binom{6}{0} \cdot \binom{8}{7}
+    \]
+
+    \item 1 musta (ja 6 valkoista):
+    \[
+    \binom{6}{1} \cdot \binom{8}{6}
+    \]
+  \end{alakohta}
+
+\vspace{0.8cm}
+
+  Todennäköisyys:
+  \[
+P = 1 - \frac{\binom{6}{0}\binom{8}{7} + \binom{6}{1}\binom{8}{6}}{\binom{14}{7}}
+  \]
+
+    Pythonilla:
+    \begin{verbatim}
+      >>> import math
+      >>> kaikki = math.comb(14, 7)
+      >>> _0_mustaa = math.comb(6, 0) * math.comb(8, 7)
+      >>> _1_musta = math.comb(6, 1) * math.comb(8, 6)
+      >>> suotuisa = kaikki - (_0_mustaa + _1_musta)
+      >>> print(suotuisa / kaikki)
+      0.9487179487179487
+    \end{verbatim}
+Eli todennäköisyys saada vähintään kaksi mustaa on $\approx 0.95$
+
+\end{kohta}
+
+
+\newpage
+\exercise{8}
+Juniorijalkapallojoukkueessa on 15 pelaajaa.
+Avauskokoonpanoon pitää valita 2 hyökkääjää,
+3 keskikenttäpelaajaa ja 3 puolustajaa sekä maalivahti.
+Loput pelaajat jäävät vaihtopelaajiksi.
+Monellako tavalla avauskokoonpano voidaan valita? 
+
+
 \end{document}
