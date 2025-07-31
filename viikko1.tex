@@ -124,7 +124,7 @@ kirjoitetaan:
 \begin{kuvaus}
   \item $S$ = $\{1,2,\ldots,20\}$, koko joukko, $|S| = 20$
   \item $A$ = $\{1, 2, 3, 4, 5\}$, joukko kiinnostavia alkioita, $|A| = 5$
-  \item $B$ joukon $S$ ne alkiot, jotka \emph{eivät} ole joukossa
+  \item $B$ joukon S ne alkiot, jotka eivät ole joukossa
   $A$: $B = S \setminus A$, jolloin $|B| = 15$
 \end{kuvaus}
 
@@ -340,80 +340,22 @@ Tavallisesta 52 pelikortin pakasta nostetaan 7 korttia. Millä todennäköisyyde
 
     Eli joukossa vähintään yksi pata $\approx 0.89$ todennälöisyydellä.
 
-\begin{comment}
-  
-\begin{alakohta}
-    \item \textbf{Tapahtuma ja sen komplementti:} \\
-    A: Kädessä on vähintään yksi pata \\
-    Komplementti $A^c$: Käsi missä ei ole yhtään pataa
 
-    \item \textbf{Lasketaan komplementti tapaukset:} \\
-    Pakassa on 13 pataa ja $52 - 13 = 39$ muuta korttia. Jotta kädessä ei ole
-    yhtään pataa, kaikki 7 korttia on valitaan näistä 39 kortista.
-    \[
-    \text{Kädet ilman pataa} = \binom{39}{7} = 15380937
-    \]
-
-    \item \textbf{Lasketaan todennäköisyys:} \\
-    Komplementti tapauksen todennäköisyys on:
-    \[
-    P(A^c) = \frac{\binom{39}{7}}{\binom{52}{7}}
-    \]
-    Alkuperäisen tapauksen todennäköisyys on $P(A) = 1 - P(A^c)$.
-    \[
-    P(\text{vähintään yksi pata}) = 1 - \frac{\binom{39}{7}}{\binom{52}{7}} \approx 1 - 0.114968 = 0.885032
-    \]
-\end{alakohta}
-
-\textbf{Vastaus (a):} Todennäköisyys on $1 - \frac{\binom{39}{7}}{\binom{52}{7}} \approx 88.5\%$.
-
-\end{comment}
 
 
 
 
 \pagebreak
   \item \textbf{punaisia kortteja on ainakin kaksi enemmän kuin mustia,}
-\begin{comment}
+
   
-  \textbf{Ratkaisu:}
-
-  Punaisia kortteja on 26 (hertta + ruutu), mustia 26 (risti + pata).  
-  Nostetaan 7 korttia, ja halutaan:
-
-  \[
-  \text{Punaiset} - \text{Mustat} \ge 2
-  \quad \Leftrightarrow \quad
-  \text{Punaiset} \ge \left\lceil \frac{7 + 2}{2} \right\rceil = 5
-  \]
-
-  Eli punaisia kortteja oltava vähintään 5. Käydään läpi kaikki tapaukset:
-  \begin{alakohta}
-    \item 5 punaista, 2 mustaa
-    \item 6 punaista, 1 musta
-    \item 7 punaista, 0 mustaa
-  \end{alakohta}
-
-  Jokaisessa tapauksessa valitaan ensin punaiset ja sitten mustat:
-  \[
-  \sum_{r=5}^{7} \binom{26}{r} \cdot \binom{26}{7 - r}
-  \]
-
-  Kokonaismäärä on $\binom{52}{7}$, joten todennäköisyys:
-  \[
-  P = \frac{1}{\binom{52}{7}} \sum_{r=5}^{7} \binom{26}{r} \cdot \binom{26}{7 - r}
-  \]
-
-  \textbf{Vastaus:} \(\dfrac{\sum_{r=5}^{7} \binom{26}{r} \cdot \binom{26}{7 - r}}{\binom{52}{7}}\)
-\end{comment}
-
 Pakassa on 26 punaista ja 26 mustaa korttia. Nostetaan 7 korttia. Olkoon p punaisten ja m mustien korttien lukumäärä kädessä.
 Ehto on $p \ge m + 2$. Koska $p+m=7$, voimme ratkaista mahdolliset parit $(p, m)$:
 \begin{itemize}
-    \item Jos $p=7, m=0 \implies 7 \ge 0+2$
-    \item Jos $p=6, m=1 \implies 6 \ge 1+2$
-    \item Jos $p=5, m=2 \implies 5 \ge 2+2$
-    \item Jos $p=4, m=3 \implies 4 \not\ge 3+2$ (Ei kelpaa)
+    \item Jos $p=7, m=0 \Rightarrow 7 \ge 0+2$
+    \item Jos $p=6, m=1 \Rightarrow 6 \ge 1+2$
+    \item Jos $p=5, m=2 \Rightarrow 5 \ge 2+2$
+    \item Jos $p=4, m=3 \Rightarrow 4 \not\ge 3+2$ (Ei kelpaa)
   \end{itemize}
 Kiinnostavia tapauksia on siis kolmea tyyppiä. Lasketaan niiden lukumäärät ja summataan ne:
 
@@ -491,68 +433,6 @@ $\Rightarrow  \dfrac{\binom{26}{5}\binom{26}{2} + \binom{26}{6}\binom{26}{1} + \
 
 
 
-\begin{comment}
-  
-\newpage
-\exercise{7}
-Laatikossa on 6 mustaa ja 8 valkoista palloa. Mikä on
-todennäköisyys, että saadaan vähintään 2 mustaa palloa, kun 
-laatikosta nostetaan 7 palloa umpimähkään
-\begin{enumerate}
-\item[(a)] takaisinpanolla,
-\item[(b)] ilman takaisinpanoa?
-\end{enumerate}
-
-\begin{kohta}
-
-  \item \textbf{takaisinpanolla,}
-
-  Takaisinpanossa jokaisella nostolla on sama jakauma:
-  $P(\text{musta}) = \frac{6}{14}$ ja $P(\text{valkoinen}) = \frac{8}{14}$
-
-  Merkitään X = mustien pallojen lukumäärä
-  Tällöin $X \sim \text{Bin}(n=7, p=6/14)$
-
-  Kiinnostaa:
-  \[
-  P(X \ge 2) = 1 - P(X = 0) - P(X = 1)
-  \]
-
-  Lasketaan nämä:
-  \[
-  P(X = k) = \binom{7}{k} \left(\frac{6}{14}\right)^k \left(\frac{8}{14}\right)^{7-k}
-  \]
-
-  \[
-  P(X \ge 2) = 1 - \binom{7}{0} \left(\frac{8}{14}\right)^7 - \binom{7}{1} \left(\frac{6}{14}\right)^1 \left(\frac{8}{14}\right)^6
-  \]
-
-  \textbf{Vastaus:} \(1 - \left(\frac{8}{14}\right)^7 - 7 \cdot \left(\frac{6}{14}\right)^1 \left(\frac{8}{14}\right)^6\)
-
-  \item \textbf{ilman takaisinpanoa}
-
-  Tämä on \textbf{hypergeometrinen jakauma}.  
-  Perusjoukossa on $N = 14$ palloa, joista $K = 6$ on mustia. Nostetaan $n = 7$ palloa ilman takaisinpanoa.  
-  Olkoon $X$ = mustien lukumäärä.
-
-  Kiinnostaa:
-  \[
-  P(X \ge 2) = 1 - P(X = 0) - P(X = 1)
-  \]
-
-  Yleinen kaava:
-  \[
-  P(X = k) = \frac{\binom{6}{k} \binom{8}{7-k}}{\binom{14}{7}}
-  \]
-
-  Sijoitetaan:
-  \[
-  P(X \ge 2) = 1 - \frac{\binom{6}{0} \binom{8}{7}}{\binom{14}{7}} - \frac{\binom{6}{1} \binom{8}{6}}{\binom{14}{7}}
-  \]
-
-  \textbf{Vastaus:} \(1 - \dfrac{\binom{6}{0} \binom{8}{7} + \binom{6}{1} \binom{8}{6}}{\binom{14}{7}}\)
-\end{kohta}
-\end{comment}
 
 
 \newpage
@@ -694,4 +574,105 @@ olevien pelaajien määrä vähenee.
 \vspace{0.3cm}
 Avauskokoonpano voidaan valita 25225200 eri tavalla.
 
+
+
+
+
+
+
+
+\newpage
+\exercise{9}
+
+\emph{Tietokoneen satunnaislukugeneraattori.} Tietokoneen 
+''satunnaisluvut'' tuotetaan yleensä täysin deterministisesti. Käyttäjän 
+näkökulmasta ne ovat enemmän tai vähemmän ennustamattomia, koska hän ei
+tunne lukuja tuottavan ohjelman sisäistä tilaa.
+
+\begin{kohta}
+
+  \item Tarkastellaan äärimmilleen yksinkertaistettua generaattoria. 
+Aloitetaan luvusta 1, ja tuotetaan jono lukuja siten, että kun jonon luku
+on arvoltaan $x$, niin seuraava luku on $(41x+7)\operatorname{mod}100$
+(tämä tarkoittaa jakojäännöstä, kun luku $(41x+7)$ jaetaan sadalla). Mitkä ovat
+jonon kolme ensimmäistä lukua?
+
+  Lähdetään luvusta \(x_0 = 1\), ja lasketaan seuraavat luvut kaavalla:
+  \[
+  x_{n+1} = (41x_n + 7) \bmod 100
+  \]
+  \begin{align*}
+  x_1 &= (41 \cdot 1 + 7) \bmod 100 = 48 \\
+  x_2 &= (41 \cdot 48 + 7) \bmod 100 = 75 \\
+  x_3 &= (41 \cdot 75 + 7) \bmod 100 = 82
+  \end{align*}
+
+  Ensimmäiset kolme lukua ovat \(48,\ 75,\ 82\).
+
+  \item Jonon luvut edustavat generaattorin \emph{tiloja}: aluksi tila on 1, 
+sitten 48 jne. Kun generaattori on tilassa $x$, uusi \emph{satunnaisluku} annetaan
+käyttäjälle ottamalla vain tilan kymmennumero (esim.\ tilassa 48 annetaan 
+numero 4, tilassa 7 numero 0 jne.). Sitten generaattori siirtyy jonossa
+seuraavaan tilaan. Mitkä ovat generaattorin tuottamat kolme ensimmäistä
+satunnaislukua?
+
+  Kun generaattori on tilassa \(x\), satunnaisluku on \(\left\lfloor x/10 \right\rfloor\), eli tilan kymmenluku.
+
+  \begin{align*}
+  \lfloor 48/10 \rfloor &= 4 \\
+  \lfloor 75/10 \rfloor &= 7 \\
+  \lfloor 82/10 \rfloor &= 8
+  \end{align*}
+
+  Ensimmäiset kolme satunnaislukua ovat \(4,\ 7,\ 8\).
+\pagebreak
+  \item let saanut generaattorista viimeksi satunnaisluvun 2, ts.\ 
+generaattori oli silloin jossakin tiloista \linebreak $20,21,22,\ldots, 29$.
+Mitkä ovat seuraavan satunnaisluvun mahdolliset arvot? Mitä mieltä olet 
+luvun satunnaisuudesta? Huom.\ Todellisissa tietokoneiden 
+satunnaislukugeneraattoreissa käytetään mm.\ tämäntapaista menetelmää, mutta 
+luvut ovat huomattavasti suurempia.
+
+  \begin{align*}
+  \text{Jos } x = 20, &\quad (41 \cdot 20 + 7) \bmod 100 = 27 \Rightarrow \lfloor 27/10 \rfloor = 2 \\
+  x = 21 &\Rightarrow 68 \Rightarrow 6 \\
+  x = 22 &\Rightarrow 9  \Rightarrow 0 \\
+  x = 23 &\Rightarrow 50 \Rightarrow 5 \\
+  x = 24 &\Rightarrow 91 \Rightarrow 9 \\
+  x = 25 &\Rightarrow 32 \Rightarrow 3 \\
+  x = 26 &\Rightarrow 73 \Rightarrow 7 \\
+  x = 27 &\Rightarrow 14 \Rightarrow 1 \\
+  x = 28 &\Rightarrow 55 \Rightarrow 5 \\
+  x = 29 &\Rightarrow 96 \Rightarrow 9
+  \end{align*}
+
+  Mahdolliset seuraavat satunnaisluvut: \(0,\ 1,\ 2,\ 3,\ 5,\ 6,\ 7,\ 9\)
+
+  Pohdinta: Koska seuraavan satunnaisluvun arvo riippuu täysin
+  tilasta, generaattori ei ole satunnainen.
+  Se voi antaa vain tiettyjä arvoja seuraavaksi --
+  ja joistakin arvoista (kuten 2:sta) seuraa usein
+  tietyt luvut. Tästä syystä todellisissa sovelluksissa
+  käytetään monimutkaisempia generaattoreita; jotka ovat
+  edelleen deterministisiä mutta hankalampia ennakoida.
+
+  \item Tutustu R-ohjelmistoon: Voit ladata ohjelman ilmaiseksi omalle 
+koneellesi osoitteesta https://cran.r-project.org. Yliopiston koneilla ohjelmisto 
+löytyy valmiiksi asennettuna. Jos et halua asentaa R:ää omalle koneellesi,
+voit käyttää R:ää interaktiivisesti osoitteessa http://www.r-fiddle.org.
+Selvitä R:n avulla edellä esitellyn satunnaislukugeneraattorin 1000.\
+satunnaisluku. 
+\vspace{0.8cm}
+
+  R for MacOS:
+  \begin{verbatim}
+    > source("~/Downloads/generaattori.R")
+    > jono <- sarja(1, 1000)
+    > jono[1000]
+    [1] 0
+  \end{verbatim}
+
+  Vastaus: Satunnaislukugeneraattorin 1000. satunnaisluku on 0.
+
+\end{kohta}
 \end{document}
