@@ -1,6 +1,16 @@
 \documentclass[12pt,a4paper]{article}
 \input{yhteiset-asetukset.tex}
 
+\begin{comment}
+\usepackage{pgffor}
+\usepackage{xfp}
+
+\foreach \n in {20,...,29} {
+  $((41 \cdot \n + 7) \bmod 100) = \the\numexpr (41*\n + 7) \relax \mod 100 = \the\numexpr (41*\n + 7) - 100*((41*\n + 7)/100) \relax$\\
+}
+
+\end{comment}
+
 \title{MAT12003 Todennäköisyyslaskenta I — Viikko 2}
 \date{}
 
@@ -9,7 +19,38 @@
 \maketitle
 
 \exercise{1}
+Olkoot $P(A)=0{,}7$, $P(B)=0{,}3$ ja $P(A\cap B)=0{,}1$.
+Määritä seuraavien tapahtumien todennäköisyydet: 
 
+\begin{kohta}
+  \item $A\cup B$,
+  \[
+  P(A\cup B)=P(A)+P(B)-P(A\cap B)=0{,}7+0{,}3-0{,}1=0{,}9
+  \]
+
+  \item $B^c$,
+  \[
+  P(B^c)=1-P(B)=1-0{,}3=0{,}7
+  \]
+
+  \item $A^c\cap B^c$,
+  \[
+  A^c\cap B^c=(A\cup B)^c \;\Rightarrow\; P(A^c\cap B^c)=1-P(A\cup B)=1-0{,}9=0{,}1
+  \]
+
+  \item $A^c\cup B$,
+  \[
+  (A^c\cup B)^c=A\cap B^c \;\Rightarrow\; P(A^c\cup B)=1-P(A\cap B^c)
+  \]
+  \[
+  P(A\cap B^c)=P(A)-P(A\cap B)=0{,}7-0{,}1=0{,}6 \;\Rightarrow\; P(A^c\cup B)=1-0{,}6=0{,}4
+  \]
+
+  \item $A\setminus B^c$.
+  \[
+  A\setminus B^c = A\cap (B^c)^c = A\cap B \;\Rightarrow\; P(A\setminus B^c)=P(A\cap B)=0{,}1
+  \]
+\end{kohta}
 
 
 \end{document}
