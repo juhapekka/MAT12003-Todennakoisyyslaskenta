@@ -93,7 +93,7 @@ $(A^c\cap B^c)^c=A\cup B$, joten
   \]
   Ensimmäinen epäyhtälö: $A\subseteq A\cup B$ \Rightarrow (a): $P(A)\le P(A\cup B)$
 
-  Toinen epäyhtälö: kirjoita erilliseksi yhdisteiksi
+  Toinen epäyhtälö: kirjoitan erilliseksi yhdisteiksi
   \[
   A\cup B = A\;\cup\;(B\setminus A)
   \]
@@ -111,5 +111,68 @@ $(A^c\cap B^c)^c=A\cup B$, joten
 
 
 
+
+\pagebreak
+\exercise{3}
+Eräässä pelissä käytetään tetraedrin muotoista painotettua noppaa, jolla silmäluvun $k\in\{1,2,3,4\}$ todennäköisyys $p_k$ on kääntäen verrannollinen silmälukuun $k$. Millä todennäköisyydellä nopalla heitetään parillinen silmäluku?
+\vspace{0.4cm}
+
+
+
+\subsection*{Vaihe 1: Todennäköisyyksien määrittely}
+Perusjoukko on $\Omega = \{1, 2, 3, 4\}$.
+Tehtävänannon mukaan silmäluvun $k$ todennäköisyys $p_k = P(\{k\})$ on 
+kääntäen verrannollinen lukuun $k$ \Rightarrow \ on olemassa 
+jokin kerroin $c > 0$, jolle pätee:
+
+\[
+p_k = c \cdot \frac{1}{k} \quad \text{kaikille } k \in \Omega.
+\]
+Määritämme ensin vakion $c$ arvon.
+
+\subsection*{Vaihe 2: $c$:n ratkaiseminen}
+Käytämme todennäköisyyden aksioomaa (TN2) $P(\Omega) = 1$.
+Koska perusjoukko $\Omega$ on erillisten alkeistapausten 
+$\{1\}, \{2\}, \{3\}, \{4\}$ unioni, niiden todennäköisyyksien 
+summa on 1:
+
+\[
+\sum_{k=1}^{4} p_k = P(\Omega) = 1
+\]
+Sijoitetaan lauseke $p_k = c/k$ tähän yhtälöön:
+\[
+p_1 + p_2 + p_3 + p_4 = c \cdot \frac{1}{1} + c \cdot \frac{1}{2} + c \cdot \frac{1}{3} + c \cdot \frac{1}{4} = 1
+\]
+Ratkaistaan $c$:
+\begin{align*}
+    c \left( 1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} \right) &= 1 \\
+    c \left( \frac{12+6+4+3}{12} \right) &= 1 \\
+    c \cdot \frac{25}{12} &= 1 \\
+    c &= \frac{12}{25}
+\end{align*}
+
+Jokaisen alkeistapauksen todennäköisyys on siis $p_k = \frac{12}{25k}$.
+
+\pagebreak
+\subsection*{Vaihe 3: Tehtävässä kysytty todennäköisyys}
+kiinnostava tapahtuma on $A = \text{saadaan parillinen silmäluku}$.
+\[
+A = \{2, 4\} = \{2\} \cup \{4\}
+\]
+Koska tapahtumat $\{2\}$ ja $\{4\}$ ovat toisensa poissulkevia ,
+voimme käyttää additiivisuusaksioomaa:
+\[
+P(A) = P(\{2\} \cup \{4\}) = P(\{2\}) + P(\{4\}) = p_2 + p_4
+\]
+Sijoitetaan yllä lasketut arvot:
+\[
+P(A) = \frac{12}{25 \cdot 2} + \frac{12}{25 \cdot 4} = \frac{12}{25} \left( \frac{1}{2} + \frac{1}{4} \right)
+\]
+Lasketaan lopputulos:
+\[
+P(A) = \frac{12}{25} \left( \frac{2+1}{4} \right) = \frac{12}{25} \cdot \frac{3}{4} = \frac{36}{100} = \frac{9}{25}
+\]
+
+Todennäköisyys saada parillinen silmäluku on $\displaystyle \frac{9}{25}$ (eli 0,36).
 
 \end{document}
