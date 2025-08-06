@@ -208,4 +208,70 @@ Populaatiossa on 818 henkeä, joista 276 on rokotettu erästä epidemiaa vastaan
 \end{kohta}
 
 
+
+
+
+
+
+
+
+\pagebreak
+\exercise{5}
+Laatikossa on 5 punaista ja 7 valkoista palloa.
+Kokeessa laatikosta nostetaan 3 palloa ilman takaisinpanoa. Laske
+todennäköisyys, että
+
+
+\begin{kohta}
+  \item kaikki pallot ovat punaisia ehdolla, että ainakin yksi on punainen,
+
+  Ehdollinen todennäköisyys:
+  \[
+    P(\text{3R}\mid \text{väh. 1R})
+    = \frac{P(\text{3R})}{P(\text{väh. 1R})}
+    = \frac{\binom{5}{3}/\binom{12}{3}}{1 - \binom{7}{3}/\binom{12}{3}}
+    = \frac{\binom{5}{3}}{\binom{12}{3}-\binom{7}{3}}
+  \]
+  Numeroina
+  \[
+    \frac{\binom{5}{3}}{\binom{12}{3}-\binom{7}{3}}
+    = \frac{10}{220-35}
+    = \frac{10}{185}
+    = \frac{2}{37}
+    \approx 0{,}054
+  \]
+
+  \item saadaan 1 punainen pallo ja 2 valkoista palloa ehdolla, että kaikki
+pallot eivät ole samanvärisiä.
+
+  Ehdollinen todennäköisyys:
+  \[
+    P(1\text{R}2\text{W}\mid \text{(3R \cup \ 3W)}^C)
+    = \frac{P(1\text{R}2\text{W})}{1 - P(\text{3R}) - P(\text{3W})}.
+  \]
+  Otannalla:
+  \[
+    P(1\text{R}2\text{W})=\frac{\binom{5}{1}\binom{7}{2}}{\binom{12}{3}},\quad
+    P(\text{3R})=\frac{\binom{5}{3}}{\binom{12}{3}},\quad
+    P(\text{3W})=\frac{\binom{7}{3}}{\binom{12}{3}}
+  \]
+  Sijoitus:
+  \[
+    \frac{\binom{5}{1}\binom{7}{2}/\binom{12}{3}}{1 - \binom{5}{3}/\binom{12}{3} - \binom{7}{3}/\binom{12}{3}}
+    = \frac{\binom{5}{1}\binom{7}{2}}{\binom{12}{3} - \binom{5}{3} - \binom{7}{3}}
+    = \frac{5\cdot 21}{220 - 10 - 35}
+    = \frac{105}{175}
+    = \frac{3}{5}
+    = 0{,}6
+  \]
+\end{kohta}
+
+
+
+
+
+
+
+
+
 \end{document}
