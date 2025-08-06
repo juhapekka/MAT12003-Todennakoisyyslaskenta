@@ -53,4 +53,63 @@ Määritä seuraavien tapahtumien todennäköisyydet:
 \end{kohta}
 
 
+
+
+
+
+
+
+\newpage
+\exercise{2}
+Olkoon $(\Omega,\mathcal{F},P)$  todennäköisyysavaruus ja $A$ ja $B$ sen tapahtumia. Todista, että
+
+%Olkoon $(\Omega,\mathcal{F},P)$ todennäköisyysavaruus ja $A,B\in\mathcal{F}$. Todista:
+
+\begin{kohta}
+  \item \textbf{Jos $A\subseteq B$, niin $P(A)\le P(B)$.}
+
+  Koska $A\subseteq B$, joukko $B$ hajoaa erilliseksi unioniksi $B=A\;\cup\;(B\setminus A)$. 
+  täysadditiivisuudesta (TN3):
+  \[
+  P(B)=P(A)+P(B\setminus A)\ \ge\ P(A)
+  \]
+
+
+    
+  \item \textbf{$0\le P(A)\le 1$.}
+
+  Aksioomista $P(A)\ge 0$. Lisäksi $A\subseteq\Omega$, joten yllä olevan todistuksen mukaan
+  \[
+  P(A)\le P(\Omega)=1
+  \]
+
+
+
+  \item \textbf{$P(A)\le 1-P(A^c\cap B^c)\le P(A)+P(B)$.}
+
+$(A^c\cap B^c)^c=A\cup B$, joten
+  \[
+  1-P(A^c\cap B^c)=P\big((A^c\cap B^c)^c\big)=P(A\cup B)
+  \]
+  Ensimmäinen epäyhtälö: $A\subseteq A\cup B$ \Rightarrow (a): $P(A)\le P(A\cup B)$
+
+  Toinen epäyhtälö: kirjoita erilliseksi yhdisteiksi
+  \[
+  A\cup B = A\;\cup\;(B\setminus A)
+  \]
+  jolloin
+  \[
+  P(A\cup B)=P(A)+P(B\setminus A)\ \le\ P(A)+P(B)
+  \]
+  Yhdistämällä saadaan
+  \[
+  P(A)\ \le\ P(A\cup B)\ =\ 1-P(A^c\cap B^c)\ \le\ P(A)+P(B)
+  \]
+\end{kohta}
+
+
+
+
+
+
 \end{document}
