@@ -273,5 +273,55 @@ pallot eivät ole samanvärisiä.
 
 
 
+\newpage
+\exercise{6}
+Juhliin hankitaan 35 MegaMix-karkkipussia, 
+40 ÖrkkiKaverit-karkkipussia ja 
+15 Salmiakkipläjäys-karkkipussia. 
+MegaMixien karkeista 25 \% on salmiakkeja, 
+ÖrkkiKaverien karkeista 40 \% on salmiakkeja ja 
+Salmiakkipläjäyksessä on vain salmiakkia. 
+Yhdestä satunnaisesti valitusta pussista poimitaan 
+satunnaisesti yksi karkki.
+\vspace{0.4cm}
+
+(Yhteensä $35+40+15 = 90$ pussia)
+
+
+\begin{kuvaus}
+  \item[M] valitaan MegaMix-pussi \Rightarrow   $P(M)=\dfrac{35}{90}$
+  \item[O] valitaan ÖrkkiKaverit-pussi \Rightarrow  $P(O)=\dfrac{40}{90}$
+  \item[S] valitaan Salmiakkipläjäys-pussi \Rightarrow  $P(S)=\dfrac{15}{90}$
+  \item[SK] valittu karkki on salmiakki
+\end{kuvaus}
+
+Kussakin pussissa salmiakin ehdollinen todennäköisyys
+\[
+P(SK\mid M)=0{,}25\qquad
+P(SK\mid O)=0{,}40\qquad
+P(SK\mid S)=1
+\]
+
+\begin{kohta}
+  \item Millä todennäköisyydellä poimittu karkki on salmiakki?\\[12pt]
+  Kokonaistodennäköisyydellä
+  \[
+    P(SK)=\!
+      \frac{35}{90}\cdot 0{,}25
+    + \frac{40}{90}\cdot 0{,}40
+    + \frac{15}{90}\cdot 1
+    =\frac{53}{120}\approx 0{,}442
+  \]
+
+  \item Millä todennäköisyydellä poimittu karkki on peräisin Salmiakkipläjäys-pussista, kun se on salmiakki?\\[12pt]
+  Bayesin kaavalla
+  \[
+    P(S\mid SK)
+    =\frac{P(SK\mid S)\,P(S)}{P(SK)}
+    =\frac{1\cdot\dfrac{15}{90}}{\dfrac{53}{120}}
+    =\frac{20}{53}\approx 0{,}377
+  \]
+\end{kohta}
+
 
 \end{document}
