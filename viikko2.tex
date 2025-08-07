@@ -324,4 +324,82 @@ P(SK\mid S)=1
 \end{kohta}
 
 
+
+
+
+
+
+
+
+\pagebreak
+\exercise{7}
+Kolmessa lippaassa on kolikot
+
+\[
+\begin{array}{ll}
+\text{Lipas 1:}& \text{2 kultarahaa (KK)}\\
+\text{Lipas 2:}& \text{1 kulta + 1 hopea (KH)}\\
+\text{Lipas 3:}& \text{2 hopearahaa (HH)}
+\end{array}
+\]
+
+Lippaista valitaan ensin umpimähkään yksi ja siitä nostetaan
+kolikko umpimähkään ilman takaisinpanoa. Kolikko osoittautuu
+kultarahaksi. Mikä on tällä ehdolla todennäköisyys, että samasta lippaasta
+nostettu toinenkin kolikko on kultaraha?
+\vspace{0.4cm}
+
+$P(1)=P(2)=P(3)=\tfrac13$
+\begin{kuvaus}
+  \item[L\(_i\)] valittiin lipas \(i\)
+  \item[G] ensimmäinen kolikko on kultaa
+\end{kuvaus}
+
+
+
+
+\[
+P(G\mid L_1)=1\qquad
+P(G\mid L_2)=\tfrac12\qquad
+P(G\mid L_3)=0
+\]
+\begin{alakohta}
+\item Ensimmäisen kolikon kultatodennäköisyys
+
+\[
+P(G)=\sum_{i=1}^{3}P(G\mid L_i)P(L_i)
+     =1\cdot\tfrac13+\tfrac12\cdot\tfrac13+0\cdot\tfrac13
+     =\tfrac12
+\]
+
+\item seuraavat lippaiden todennäköisyydet annetulla kultarahalla
+
+\[
+P(L_1\mid G)=\frac{P(G\mid L_1)P(L_1)}{P(G)}
+            =\frac{1\cdot\tfrac13}{\tfrac12}=\frac23\qquad
+P(L_2\mid G)=\frac{1/2\cdot\tfrac13}{\tfrac12}=\frac13\qquad
+P(L_3\mid G)=0
+\]
+
+\item toinen kolikko on kultaa
+
+
+
+\[
+\begin{aligned}
+P(\text{2.\ kolikko kultaa}\mid G)
+ &= P(L_1\mid G)\,&\cdot&\,P(\text{K}\mid L_1\cap G) &+& P(L_2\mid G)\,&\cdot&\,P(\text{K}\mid L_2\cap G) \\[4pt]
+ &= \frac23          &\cdot&\,1 &+& \frac13        &\cdot&\,0
+\end{aligned}
+\;=\;
+\frac23
+\]
+
+\vspace{0.4cm}
+Eli, todennäköisyys että samasta lippaasta nostettu toinenkin kolikko on kultaraha on
+$P= \frac{2}{3}\approx$ 0{,}67
+
+\end{alakohta}
+
+
 \end{document}
