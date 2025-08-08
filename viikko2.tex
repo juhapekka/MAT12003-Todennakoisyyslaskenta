@@ -402,4 +402,76 @@ $P= \frac{2}{3}\approx$ 0{,}67
 \end{alakohta}
 
 
+
+
+
+
+
+
+
+\pagebreak
+\exercise{8}
+Salama nostaa tavallisesta 52 kortin pakasta kolme korttia.
+Hän pitää kaikki nostamansa hertat, laittaa muita maita olevat 
+kortit sivuun ja nostaa niiden tilalle jäljellä olevasta pakasta 
+uudet kortit. Millä todennäköisyydellä Salamalla on tämän jälkeen 
+kädessään kolme herttaa?
+\vspace{0.4cm}
+
+Lasketaan aina \textbf{suotuisat jaot / kaikki jaot}
+    
+\begin{alakohta}
+    
+\item Jaetaan tapaukset alkuperäisten herttojen lukumäärän mukaan
+
+Olkoon $j\in\{0,1,2,3\}$ = “kuinka monta herttaa tuli ensimmäisellä nostolla”.
+
+\[
+P(j)=\frac{\text{(tapoja saada $j$ herttaa ja $3-j$ muuta)}}{\text{(kaikkia kolmen kortin nostoja)}}=
+\frac{\binom{13}{j}\binom{39}{3-j}}{\binom{52}{3}}
+\]
+
+\item Todennäköisyys täydentää käsi täyteen herttoja
+
+Jos alussa tuli $j$ herttaa, pakkaan jäi $13-j$ herttaa ja kortteja yhteensä $49$.  
+Salama nostaa $3-j$ uutta korttia; niiden on oltava kaikki herttoja:
+
+
+\[
+P\!\bigl(\text{onnistuu}\,\mid \,j\bigr)=
+\frac{\binom{13-j}{3-j}}{\binom{49}{3-j}}
+\qquad \Bigm| \text{kun }j=3\text{ nimittäjä on } \binom{49}{0}=1
+\]
+
+\item Kokonaistodennäköisyys
+
+\[
+\begin{aligned}
+P(\text{3 herttaa lopuksi})
+&=\frac{\binom{39}{3}}{\binom{52}{3}}\cdot\frac{\binom{13}{3}}{\binom{49}{3}}
+ +\frac{\binom{13}{1}\binom{39}{2}}{\binom{52}{3}}\cdot\frac{\binom{12}{2}}{\binom{49}{2}}
++\frac{\binom{13}{2}\binom{39}{1}}{\binom{52}{3}}\cdot\frac{\binom{11}{1}}{\binom{49}{1}}
+ +\frac{\binom{13}{3}}{\binom{52}{3}}\cdot 1 \\[6pt]
+&=\frac{9139}{22100}\cdot\frac{286}{18424}
+ + \frac{13\cdot 741}{22100}\cdot\frac{66}{1176}
+ + \frac{78\cdot 39}{22100}\cdot\frac{11}{49}
+ + \frac{286}{22100} \\[4pt]
+&=\frac{585\,101}{7\,830\,200}
+ \;\approx\;0{,}0747.
+\end{aligned}
+\]
+
+
+Salamalla on tämän jälkeen 
+kädessään kolme herttaa \approx\, 0.07 todennäköisyydellä.
+
+\end{alakohta}
+
+
+
+\pagebreak
+
+
+
+
 \end{document}
