@@ -9,6 +9,88 @@
 \maketitle
 
 \exercise{1}
+Heitetään kahta noppaa. Olkoon $A =$ ”ainakin toinen silmäluvuista on parillinen” ja $B =$ ”silmälukujen summa on vähintään 9”. Ovatko $A$ ja $B$ riippumattomia?
 
+
+\vspace{0.4cm}
+
+
+Perusjoukko $|\Omega|=36$.
+
+\[
+P(A)=1-\Big(\tfrac36\Big)^2=\tfrac{27}{36}=\tfrac34,\qquad
+P(B)=\tfrac{10}{36}=\tfrac{5}{18}
+\]
+summaa $\ge 9$ on 10 tapausta ja niistä vain $(5,5)$ ei kuulu $A$:han
+
+{\small
+\[
+\begin{array}{c|l|c|c}
+\text{Summa} & \text{tulokset} & \# & \text{väh. yksi parillinen}\\
+\hline
+9  & (3,6),(4,5),(5,4),(6,3) & 4 & 4 \\
+10 & (4,6),(5,5),(6,4)       & 3 & 2 \\
+11 & (5,6),(6,5)             & 2 & 2 \\
+12 & (6,6)                   & 1 & 1 \\
+\hline
+   & \text{yhteensä}         & 10& 9
+\end{array}
+\]}
+
+joten
+\[
+P(A\cap B)=\tfrac{9}{36}=\tfrac14
+\]
+Koska
+\[
+P(A)P(B)=\tfrac34\cdot\tfrac{5}{18}=\tfrac{5}{24}\ \ne\ \tfrac14=P(A\cap B)
+\]
+\vspace{0.4cm}
+
+tapahtumat $A$ ja $B$ eivät ole riippumattomia.
+
+
+
+
+
+
+
+\pagebreak
+\exercise{2}
+Korttipakasta nostetaan 13 korttia (ilman takaisinpanoa). Olkoon $X$ ässien lukumäärä otoksessa. Laske tapahtumien $\{X=3\}$ ja $\{X\ge 2\}$ todennäköisyydet. Mitä jakaumaa $X$ noudattaa?
+\vspace{0.4cm}
+
+Koska nostot tehdään ilman takaisinpanoa populaatiosta
+(N=52) jossa on K=4 ässää, ässien lukumäärä X noudattaa
+hypergeometrista jakaumaa: $X\sim\mathrm{Hyperg}(52,4,13)$
+\vspace{0.4cm}
+
+\[
+P(X=k)=\frac{\binom{4}{k}\,\binom{48}{13-k}}
+{\binom{52}{13}},\qquad k=0,1,2,3,4
+\]
+
+\begin{kohta}
+\item $P(X=3)$:
+\[
+P(X=3)=\frac{\binom{4}{3}\binom{48}{10}}{\binom{52}{13}}
+=\frac{858}{20825}\approx 0{,}04120
+\]
+
+\item $P(X\ge 2)$ (komplementtina):
+%\[
+%f(k\ge 2) = P(X\ge 2)=1-P(X\le 1)
+%=1-\frac{\binom{48}{13}+\binom{4}{1}\binom{48}{12}}{\binom{52}{13}}
+%=\frac{5359}{20825}\approx 0{,}25733
+%\]
+
+\[ P(X \ge 2) = 1 - P(X \le 1) = 1 - \big( P(X=0) + P(X=1) \big) \]
+\[ 
+\begin{aligned}
+&= 1 - \left( \frac{\binom{4}{0}\binom{48}{13}}{\binom{52}{13}} + \frac{\binom{4}{1}\binom{48}{12}}{\binom{52}{13}} \right)\\
+&=\frac{5359}{20825}\approx 0{,}25733
+\end{aligned}
+\]
+\end{kohta}
 
 \end{document}
