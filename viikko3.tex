@@ -1,5 +1,6 @@
 \documentclass[12pt,a4paper]{article}
 \input{yhteiset-asetukset.tex}
+\newcommand{\riip}{\perp \!\!\! \perp}
 
 \title{MAT12003 Todennäköisyyslaskenta I — Viikko 3}
 \date{}
@@ -92,5 +93,60 @@ P(X=3)=\frac{\binom{4}{3}\binom{48}{10}}{\binom{52}{13}}
 \end{aligned}
 \]
 \end{kohta}
+
+
+
+
+
+\pagebreak
+\exercise{3}
+Olkoot $A$, $B$ ja $C$ tapahtumia, joille $P(A)=P(B)=0{,}25$ ja $P(C)=0{,}3$. Lisäksi tiedetään, että $A\riip B$ ja $B\riip C$ sekä $A$ ja $C$ ovat erillisiä. Laske $P(A\cup B\cup C)$.\\
+
+\noindent Vinkki: Muista, että $A\cup B\cup C=(A\cup B)\cup C$ ja $(A\cup B)\cap C=(A\cap B)\cup(B\cap C)$.
+
+
+\begin{alakohta}
+\item Hajotus ja leikkauksen lasku:
+\[
+A\cup B\cup C=(A\cup B)\cup C,\qquad
+(A\cup B)\cap C=(A\cap C)\cup(B\cap C)
+\]
+Koska $A$ ja $C$ ovat erillisiä, $A\cap C=\varnothing$, joten
+\[
+(A\cup B)\cap C = B\cap C
+\]
+
+\item $P(A\cup B)$ riippumattomuudesta:
+\[
+P(A\cup B)=P(A)+P(B)-P(A\cap B),
+\quad A\riip B\Rightarrow P(A\cap B)=P(A)P(B)=\tfrac14\cdot\tfrac14=\tfrac{1}{16}
+\]
+Siis:
+\[
+P(A\cup B)=\tfrac14+\tfrac14-\tfrac{1}{16}=\tfrac{7}{16}
+\]
+
+\item $P(B\cap C)$ riippumattomuudesta:
+\[
+B\riip C\Rightarrow P(B\cap C)=P(B)P(C)=\tfrac14\cdot\tfrac{3}{10}=\tfrac{3}{40}
+\]
+
+\item Edelliset yhdessä:
+\[
+\begin{aligned}
+P(A\cup B\cup C)
+&=P(A\cup B)+P(C)-P\big((A\cup B)\cap C\big)\\
+&=\tfrac{7}{16}+\tfrac{3}{10}-\tfrac{3}{40}
+= \frac{35+24-6}{80}
+= \frac{53}{80}
+=0{,}6625
+\end{aligned}
+\]
+\end{alakohta}
+
+
+
+
+
 
 \end{document}
