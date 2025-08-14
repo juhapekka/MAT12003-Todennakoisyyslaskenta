@@ -296,5 +296,60 @@ F_S(s) & \tfrac{1}{6} & \tfrac{11}{24} & \tfrac{17}{24} & \tfrac{21}{24} & \tfra
 
 
 \pagebreak
+\exercise{6}
+Lentoyhtiö tietää kokemuksesta, että keskimäärin 5 \% paikan varanneista jää saapumatta
+koneeseen. Siksi yhtiö myykin 257 lippua koneeseen, johon mahtuu 250 matkustajaa. Millä
+todennäköisyydellä jokainen koneeseen saapuva saa paikan?\\
+
+
+
+\begin{alakohta}
+  \item Y on poisjääneiden lukumäärä. Silloin:
+  \[
+    Y \sim \mathrm{Bin}(n=257,\ p=0{,}05),\qquad
+    P(Y=k)=\binom{257}{k}(0{,}05)^k(0{,}95)^{257-k}
+  \]
+  Saapuvien määrä on A=N-Y
+
+  \item Kaikki mahtuvat $\iff$ saapuvia korkeintaan C:
+  \[
+    A \le C\ \Longleftrightarrow\ N - Y \le C\ \Longleftrightarrow\ Y \ge N-C = 257-250=7
+  \]
+  Siis:
+  \[
+    P(\text{kaikki mahtuvat koneeseen})=P(Y\ge 7)
+  \]
+
+  \item Kirjoitus binomin avulla. Käytetään komplementtia:
+  \[
+    P(Y\ge 7)
+    = \sum_{k=7}^{257}\binom{257}{k}(0{,}05)^k(0{,}95)^{257-k}
+    = 1 - \sum_{k=0}^{6}\binom{257}{k}(0{,}05)^k(0{,}95)^{257-k}
+  \]
+
+  \item Numeroarvo:\\
+
+   Pythonilla:
+   {\small
+   \begin{verbatim}
+      >>> import math
+      >>> n = 257
+      >>> p = 0.05
+      >>> print(1 - sum(math.comb(n, k) * (p**k) * ((1 - p)**(n - k)) for k in range(7)))
+      0.9745257525592507
+   \end{verbatim}
+   }
+
+   Siis:
+  \[
+    P(Y\ge 7)\ \approx\ 0{,}97453 \quad (\text{noin }97{,}45\%)
+  \]
+
+
+\end{alakohta}
+
+
+
+
 
 \end{document}
