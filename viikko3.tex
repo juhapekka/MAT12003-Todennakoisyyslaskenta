@@ -352,4 +352,64 @@ todennäköisyydellä jokainen koneeseen saapuva saa paikan?\\
 
 
 
+
+\pagebreak
+\exercise{7}
+Hajamielisellä herra H:lla on nipussaan $n$ avainta, 
+joista yksi sopii hänen oveensa.
+Herra H ei kuitenkaan muista, mikä. Olkoon $X$ sen kerran 
+järjestysluku, jolla ovi aukeaa. Laske $X$:n 
+pistetodennäköisyysfunktio ja kertymäfunktio olettaen, että herra
+H valitsee avaimen umpimähkään ja
+\begin{enumerate}
+\item[(a)] muistaa mitä avaimia on jo kokeillut,
+\item[(b)] ei muista mitä avaimia hän on kokeillut.
+\end{enumerate}
+Mitä jakaumaa $X$ noudattaa kohdassa (a)? Entä kohdassa (b)?
+\vspace{0.4cm}
+
+
+
+
+\begin{kohta}
+\item \textbf{muistaa mitä avaimia on jo kokeillut, (ei siis yritä samaa kahdesti)}
+
+Idea on että yritykset on "ilman takaisinpanoa" ja avaimet
+käydään läpi satunnaisessa järjestyksessä.\\
+
+\textbf{Pistetodennäköisyysfunktio (ptnf):}
+\[
+p_X(k)=P(X=k)=\frac{1}{n},\qquad k=1,2,\dots,n
+\]
+
+\textbf{Kertymäfunktio:}
+\[
+F_X(k)=P(X\le k)=\frac{k}{n},\qquad k=1,2,\dots,n
+\]
+
+
+
+X on \textbf{diskreetti tasajakauma}
+%\pagebreak
+\item \textbf{ei muista mitä avaimia hän on kokeillut. (voi siis yrittää samaa uudelleen)}
+
+Ideo on että jokaisella yrityksellä valitaan satunnaisesti yksi n:stä avaimesta, 
+riippumattomasti edellisistä. Onnistumistodennäköisyys jokaisella
+yrityksellä on 1/n\\
+
+\textbf{Pistetodennäköisyysfunktio (ptnf)}:
+\[
+p_X(k)=P(X=k)=\Big(1-\frac{1}{n}\Big)^{k-1}\,\frac{1}{n},\qquad k=1,2,\dots
+\]
+
+\textbf{Kertymäfunktio:}
+\[
+F_X(k)=P(X\le k)=1-\Big(1-\frac{1}{n}\Big)^{k},\qquad k=1,2,\dots
+\]
+
+
+X on \textbf{geometrinen jakauma}
+\end{kohta}
+
+
 \end{document}
