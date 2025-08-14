@@ -149,4 +149,152 @@ P(A\cup B\cup C)
 
 
 
+
+\pagebreak
+\exercise{4}
+Heitetään painotettua kolikkoa kolme kertaa. Heitot ovat riippumattomia toisistaan, ja kruunan todennäköisyys on $p$, ($0<p<1$). Osoita, että tapahtumat
+\begin{align*}
+A&=\text{''saadaan sekä kruunia että klaavoja''},\\
+B&=\text{''saadaan enintään yksi klaava''}
+\end{align*}
+ovat riippumattomia, jos ja vain jos $p=\frac{1}{2}$.
+
+
+\begin{alakohta}
+\item Perustodennäköisyydet:
+\[
+P(A)=1-\big(p^3+(1-p)^3\big)=3p(1-p)
+\]
+(A: vähintään yksi kumpaakin \Leftrightarrow \, ei ole
+kolme kruunaa eikä kolme klaavaa)
+
+\[
+P(B)=P(\text{0 klaavaa})+P(\text{1 klaava})
+= p^3+3p^2(1-p)=p^2(3-2p)
+\]
+
+\[
+P(A\cap B)=P(\text{täyttyy $A$ ja $\le1$ klaavaa})
+= P(\text{tasan 1 klaava})
+=3p^2(1-p)
+\]
+
+\item Riippumattomuusehto:\\ $A\riip B \iff P(A\cap B)=P(A)P(B)$
+\[
+3p^2(1-p)\;=\; \big(3p(1-p)\big)\,\big(p^2(3-2p)\big)
+\quad\Longleftrightarrow\quad
+1=p(3-2p)
+\]
+koska $0<p<1$ \Rightarrow \, voidaan jakaa tekijällä $3p^2(1-p)>0$\\
+Tästä
+\[
+3p-2p^2=1\ \Longleftrightarrow\ 2p^2-3p+1=0
+\ \Longleftrightarrow\ (2p-1)(p-1)=0
+\]
+Sallitulla välillä ratkaisu on \(p=\tfrac12\)
+
+\item Takaisinpäin ("vain jos"): \\Kun \(p=\tfrac12\):
+\[
+P(A)=3\cdot\tfrac12\cdot\tfrac12=\tfrac34,\quad
+P(B)=\tfrac14(3-1)=\tfrac12,\quad
+P(A\cap B)=3\cdot\tfrac14\cdot\tfrac12=\tfrac38=\tfrac34\cdot\tfrac12
+\]
+Siis \(P(A\cap B)=P(A)P(B)\), joten \(A\riip B\)
+\end{alakohta}
+
+\noindent Siis: \(A\) ja \(B\) ovat riippumattomia jos ja 
+vain jos \(p=\tfrac12\)
+
+
+
+
+
+
+
+
+
+
+\pagebreak
+\exercise{5}
+Heitetään ensin tavallista 6-sivuista noppaa, sitten 
+4-sivuista noppaa (jossa silmäluvut 1, 2, 3, 4 ovat yhtä todennäköiset).
+Olkoon heittojen tulokset $X$ ja $Y$, ja $S=|X-Y|$. Laske satunnaismuuttujan $S$ pistetodennäköisyydet ja piirrä pistetodennäköisyysfunktiota havainnollistava pylväsdiagrammi sekä kertymäfunktion kuvaaja.\\
+
+
+
+
+Kaikkia pareja on $6\cdot 4=24$. S saa arvot $s\in\{0,1,2,3,4,5\}$\\
+
+\textbf{Pistetodennäköisyysfunktio (ptnf):}
+Merkitään $p_S(s)=P(S=s)$
+\[
+p_S(s)=\frac{\#\{(x,y):|x-y|=s\}}{24}
+\]
+
+\emph{miksi nämä lukumäärät:} 
+ehto $|x-y|=s$ tarkoittaa joko $x-y=s$ tai $y-x=s$:
+
+{\small
+\[
+\begin{array}{c|c|c|c|c}
+s & \#\{(x,y):x-y=s\} & \#\{(x,y):y-x=s\} & \text{yht.} & p_S(s)=\dfrac{\#}{24} \\\hline
+0 & \#\{(1,1),(2,2),(3,3),(4,4)\}=4 & \text{--} & 4 & \dfrac{4}{24} \\
+1 & 4 & 3 & 7 & \dfrac{7}{24} \\
+2 & 4 & 2 & 6 & \dfrac{6}{24} \\
+3 & 3 & 1 & 4 & \dfrac{4}{24} \\
+4 & 2 & 0 & 2 & \dfrac{2}{24} \\
+5 & 1 & 0 & 1 & \dfrac{1}{24} \\
+\end{array}
+\]
+}
+\begin{comment}
+   
+\begin{itemize}[leftmargin=1.2cm]
+  \item $s=0$: parit $(1,1),(2,2),(3,3),(4,4)$ $\Rightarrow$ $\#=4$.
+  \item $s=1$: $x-y=1$ tuottaa $x=2,3,4,5$ (4 kpl), ja $y-x=1$ tuottaa $y=2,3,4$ (3 kpl) $\Rightarrow$ $\#=7$.
+  \item $s=2$: vastaavasti $4+2=6$.
+  \item $s=3$: $3+1=4$.
+  \item $s=4$: $2+0=2$.
+  \item $s=5$: $1+0=1$.
+\end{itemize}
+\end{comment}
+
+Siis ptnf on
+\[
+\begin{aligned}
+p_S(0)&=\tfrac{4}{24}=\tfrac{1}{6},&
+p_S(1)&=\tfrac{7}{24},&
+p_S(2)&=\tfrac{6}{24}=\tfrac{1}{4},\\
+p_S(3)&=\tfrac{4}{24}=\tfrac{1}{6},&
+p_S(4)&=\tfrac{2}{24}=\tfrac{1}{12},&
+p_S(5)&=\tfrac{1}{24}.
+\end{aligned}
+\]
+
+\textbf{Kertymäfunktio:}
+\[
+F_S(s)=P(S\le s),\quad \text{diskreetit pisteet:}\quad
+\begin{array}{c|cccccc}
+s & 0 & 1 & 2 & 3 & 4 & 5\\\hline
+F_S(s) & \tfrac{1}{6} & \tfrac{11}{24} & \tfrac{17}{24} & \tfrac{21}{24} & \tfrac{23}{24} & 1
+\end{array}
+\]
+\pagebreak
+
+\textbf{Kuvaajat:}
+
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.6\textwidth]{viikko3tehtävä5.jpg}
+%  \caption{ptnf $p_S(s)=P(S=s)$}
+\end{figure}
+
+
+
+
+
+
+\pagebreak
+
 \end{document}
