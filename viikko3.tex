@@ -412,4 +412,68 @@ X on \textbf{geometrinen jakauma}
 \end{kohta}
 
 
+
+
+
+
+
+\pagebreak
+\exercise{8}
+Laske todennäköisyys, että $X$ on parillinen, jos
+\begin{enumerate}
+\item[(b)] $X\sim\operatorname{Geom}(p)$.
+\item[(a)] $X\sim\operatorname{Poisson}(\lambda)$,
+\end{enumerate}
+Vinkki: Kaavasta $e^x=\sum_{k=0}^\infty\frac{x^k}{k!}$ voisi olla hyötyä (b)-kohdassa.\\
+\vspace{0.2cm}
+
+\korostus{Nää tehtävät alla on samassa järjestyksessä kuin tehtäväpaperissa, ensin b sitten a.}
+\vspace{0.2cm}
+
+
+\begin{kohta}
+\item[\textbf{(b)}] \textbf{$X\sim\mathrm{Geom}(p)$}, ptnf: $P(X=k)=p(1-p)^k$
+\[
+\begin{aligned}
+P(X\ \text{parillinen})
+&=\sum_{m=0}^\infty p(1-p)^{2m}
+= p\sum_{m=0}^\infty \big((1-p)^2\big)^{m}
+= \frac{p}{1-(1-p)^2}
+= \frac{1}{\,2-p\,}
+\end{aligned}
+\]
+
+\item[\textbf{(a)}] \textbf{$X\sim\mathrm{Poisson}(\lambda)$}, ptnf: $P(X=k)=e^{-\lambda}\dfrac{\lambda^k}{k!}$
+\[
+\begin{aligned}
+P(X\ \text{parillinen})
+&=\sum_{m=0}^\infty e^{-\lambda}\frac{\lambda^{2m}}{(2m)!}
+= e^{-\lambda}\sum_{m=0}^\infty\frac{\lambda^{2m}}{(2m)!}
+\end{aligned}
+\]
+Käytetään vihjettä $e^x=\sum_{k\ge0}\frac{x^k}{k!}$ sekä $e^{-x}=\sum_{k\ge0}\frac{(-1)^k x^k}{k!}$\\
+yhteenlaskemalla:
+\[
+e^{\lambda}+e^{-\lambda}
+=\sum_{k=0}^\infty \frac{(1+(-1)^k)\lambda^k}{k!}
+=2\sum_{m=0}^\infty \frac{\lambda^{2m}}{(2m)!}
+\]
+siksi:
+\[
+\sum_{m=0}^\infty \frac{\lambda^{2m}}{(2m)!}
+=\frac{e^{\lambda}+e^{-\lambda}}{2}
+\]
+siis:
+\[
+P(X\ \text{parillinen})
+= e^{-\lambda}\cdot\frac{e^{\lambda}+e^{-\lambda}}{2}
+= \frac{1+e^{-2\lambda}}{2}
+\]
+\end{kohta}
+
+
+
+
+
+
 \end{document}
