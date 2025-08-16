@@ -432,18 +432,18 @@ Vinkki: Kaavasta $e^x=\sum_{k=0}^\infty\frac{x^k}{k!}$ voisi olla hyötyä (b)-k
 
 
 \begin{kohta}
-\item[\textbf{(b)}] \textbf{$X\sim\mathrm{Geom}(p)$}, ptnf: $P(X=k)=p(1-p)^k$
+\item[\textbf{(b)}] \textbf{$X\sim\mathrm{Geom}(p)$}, ptnf $P(X=k)=p(1-p)^k,\ k=0,1,2,\dots$
 \[
 \begin{aligned}
 P(X\ \text{parillinen})
 &=\sum_{m=0}^\infty p(1-p)^{2m}
-= p\sum_{m=0}^\infty \big((1-p)^2\big)^{m}
+= p\sum_{m=0}^\infty \big((1-p)^2\big)^m
 = \frac{p}{1-(1-p)^2}
 = \frac{1}{\,2-p\,}
 \end{aligned}
 \]
 
-\item[\textbf{(a)}] \textbf{$X\sim\mathrm{Poisson}(\lambda)$}, ptnf: $P(X=k)=e^{-\lambda}\dfrac{\lambda^k}{k!}$
+\item[\textbf{(a)}] \textbf{$X\sim\mathrm{Poisson}(\lambda)$}, ptnf: $P(X=k)=e^{-\lambda}\dfrac{\lambda^k}{k!} ,\qquad k=0,1,2,\dots$
 \[
 \begin{aligned}
 P(X\ \text{parillinen})
@@ -474,6 +474,118 @@ P(X\ \text{parillinen})
 
 
 
+
+
+\pagebreak
+\exercise{9}
+Tutkitaan ensin kahden 6-sivuisen nopan heittoa, tulokset
+satunnaismuuttujia $X$ ja $Y$, ja niiden summa $S=X+Y$. Moodlesta löytyvä
+R-koodi \texttt{noppasumma.r} käy läpi kaikki parin $(X,Y)$ mahdolliset
+arvot, laskee kussakin tapauksessa summan $S$, ja laskee yhteen kutakin
+summan arvoa vastaavat todennäköisyydet. Toisin sanoen koodi laskee $S$:n
+pistetodennäköisyydet tarkasti (laskentatarkkuuden rajoissa toki). Huomaa,
+että kyseessä ei ole satunnaiskokeesta saatu epätarkka mittaustulos, vaan 
+koko perusjoukko on käyty tarkasti läpi.
+
+Kokeile koodia, ja muokkaa sitä sitten niin, että se laskee summan $S$
+pistetodennäköisyydet, kun heittää kolmea noppaa tuloksi $X$, $Y$, $Z$
+ja tutkitaan summan $S=X+Y+Z$ jakaumaa. Liitä vastaukseen muokkaamasi 
+koodi sekä laskemasi pistetodennäköisyydet. Jos haluat, voit piirtää
+ne esim.\ komennolla \texttt{plot(f, type="h")}.\\
+
+
+
+\textbf{Kahden ja kolmen nopan summan ptnf}
+
+\paragraph{Alkuperäinen kahden nopan koodi (\texttt{noppasumma.r}).}
+\begin{lstlisting}[language=R]
+# Luodaan vektori f, jonka jokainen komponentti on 0
+f = rep(0,12);
+
+# K�yd��n l�pi kaikki mahdolliset
+# parin (X,Y) arvot, kukin tasan kerran.
+for (x in 1:6) {
+    for (y in 1:6) {
+        # T�m�n parin todenn�k�isyys
+        pxy = 1/36
+        
+        # Summan arvo, jos toteutuu t�m� pari
+        s = x+y
+        
+        # Lis�t��n kyseisen summan todenn�k�isyyteen
+        f[s] = f[s] + pxy
+    }
+}
+
+# N�ytet��n arvot
+print(f)
+\end{lstlisting}
+
+\textbf{Tulostus (2 noppaa):}\\
+R tulostaa vektorin (ensimmäinen nolla vastaa mahdotonta summaa 1):
+{\tiny
+\[
+\bigl[\,0,\ 0.02777778,\ 0.05555556,\ 0.08333333,\ 0.11111111,\ 0.13888889,\ 0.16666667,\ 0.13888889,\ 0.11111111,\ 0.08333333,\ 0.05555556,\ 0.02777778\,\bigr]
+\]
+}
+
+eli
+\[
+P(S=s)=\frac{1,2,3,4,5,6,5,4,3,2,1}{36}\quad\text{summille }s=2,3,\dots,12.
+\]
+\pagebreak
+
+\textbf{Muokattu kolmen nopan koodi:}
+\begin{lstlisting}[language=R]
+# Luodaan vektori f, jonka jokainen komponentti on 0
+f = rep(0,18);
+
+# Käydään läpi kaikki mahdolliset
+# kolmikot (X,Y,Z), kukin tasan kerran.
+for (x in 1:6) {
+    for (y in 1:6) {
+        for (z in 1:6) {
+            # Tämän kolmikoin todennäköisyys
+            pxyz = 1/216
+            
+            # Summan arvo, jos toteutuu tämä kolmikko
+            s = x + y + z
+            
+            # Lisätään kyseisen summan todennäköisyyteen
+            f[s] = f[s] + pxyz
+        }
+    }
+}
+
+# Näytetään arvot
+print(f)
+\end{lstlisting}
+
+\textbf{Pistetodennäköisyydet, 3 noppaa:}
+
+Frekvenssit
+\[
+1,3,6,10,15,21,25,27,27,25,21,15,10,6,3,1
+\]
+(=216 yhteensä), joten
+\[
+P(S=s)=\frac{\text{frekvenssi}(s)}{216},\qquad s=3,\dots,18.
+\]
+Desimaaleina (pyöristettynä, 2 ekaa mahdotonta jätetty pois):
+{\tiny
+\[
+\begin{array}{c|cccccccccccccccc}
+s&3&4&5&6&7&8&9&10&11&12&13&14&15&16&17&18\\\hline
+P &.00463&.01389&.02778&.04630&.06944&.09722&.11574&.12500&.12500&.11574&.09722&.06944&.04630&.02778&.01389&.00463
+\end{array}
+\]
+}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.3\textwidth]{noppasumma3.png}
+%  \caption{ptnf $p_S(s)=P(S=s)$}
+\end{figure}
 
 
 \end{document}
