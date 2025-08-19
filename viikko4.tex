@@ -9,6 +9,61 @@
 \maketitle
 
 \exercise{1}
+Heitetään tavallista noppaa ja nostetaan korttipakasta kortti. Olkoon $X$ suurempi nopan silmäluvusta ja kortin arvosta (ässän arvo on 1, jätkän 11, kuningattaren 12 ja kuninkaan 13). Määritä satunnaismuuttujan $X$ odotusarvo.
 
+%Heitetään tavallista noppaa ja nostetaan korttipakasta kortti. Olkoon $X$ suurempi nopan silmäluvusta ja kortin arvosta (ässän arvo 1, jätkän 11, kuningattaren 12 ja kuninkaan 13). Määritä satunnaismuuttujan $X$ odotusarvo.
+\vspace{0.4cm}
+Olkoon $X=\max(D,K)$, missä
+noppa $D\in\{1,\dots,6\}$ ja kortti $K\in\{1,\dots,13\}$.
+Heitot on riippumattomat\\
+
+
+PTNF. Riippumattomuuden vuoksi:
+\[
+F_X(x)=P(X\le x)=P(D\le x,\;K\le x)=P(D\le x)\,P(K\le x).
+\]
+jaetaan tapaukset
+\[
+F_X(x)=
+\begin{cases}
+\displaystyle \frac{x}{6}\cdot\frac{x}{13}=\frac{x^2}{78} & x=1,2,\dots,6,\\[6pt]
+\displaystyle 1\cdot\frac{x}{13}=\frac{x}{13} & x=7,8,\dots,13,
+\end{cases}
+\quad\text{ja }F_X(0)=0
+\]
+pistetodennäköisyysfunktio (ptnf) saadaan erotuksena:
+\[
+P(X=x)=F_X(x)-F_X(x-1)=
+\begin{cases}
+\displaystyle \frac{x^2-(x-1)^2}{78}=\frac{2x-1}{78} & x=1,2,\dots,6\\[8pt]
+\displaystyle \frac{x-(x-1)}{13}=\frac{1}{13} & x=7,8,\dots,13
+\end{cases}
+\]
+
+\textbf{Odotusarvo} 
+\[
+\mathbb{E}[X]=\sum_{x=1}^{13} x\,P(X=x)
+=\sum_{x=1}^{6} x\cdot\frac{2x-1}{78}+\sum_{x=7}^{13} x\cdot\frac{1}{13}
+\]
+Lasketaan summat:
+\[
+\sum_{x=1}^{6} x(2x-1)=2\sum_{x=1}^{6}x^2-\sum_{x=1}^{6}x
+=2\cdot 91-21=161
+\]
+\[
+\sum_{x=7}^{13} x = \frac{(7+13)\cdot 7}{2}=70
+\]
+Siis
+\[
+\mathbb{E}[X]=\frac{161}{78}+\frac{70}{13}
+=\frac{161}{78}+\frac{420}{78}
+=\frac{581}{78}\approx 7{,}449
+\]
+
+%$F_X(x)=P(\max(D,K)\le x)$ tarkoittaa, että molempien on oltava korkeintaan $x$\\
+%Kun $x\le6$, saadaan $P(D\le x)=x/6$ ja $P(K\le x)=x/13$ $\Rightarrow F_X(x)=x^2/78$ \\
+%Kun $x\ge7$, noppa on varmasti $\le x$,
+%joten $F_X(x)=x/13$ \\
+%Pistetodennäköisyys on peräkkäisten $F_X$-arvojen erotus.
 
 \end{document}
