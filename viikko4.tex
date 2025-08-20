@@ -11,7 +11,6 @@
 \exercise{1}
 Heitetään tavallista noppaa ja nostetaan korttipakasta kortti. Olkoon $X$ suurempi nopan silmäluvusta ja kortin arvosta (ässän arvo on 1, jätkän 11, kuningattaren 12 ja kuninkaan 13). Määritä satunnaismuuttujan $X$ odotusarvo.
 
-%Heitetään tavallista noppaa ja nostetaan korttipakasta kortti. Olkoon $X$ suurempi nopan silmäluvusta ja kortin arvosta (ässän arvo 1, jätkän 11, kuningattaren 12 ja kuninkaan 13). Määritä satunnaismuuttujan $X$ odotusarvo.
 \vspace{0.4cm}
 Olkoon $X=\max(D,K)$, missä
 noppa $D\in\{1,\dots,6\}$ ja kortti $K\in\{1,\dots,13\}$.
@@ -65,5 +64,151 @@ Siis
 %Kun $x\ge7$, noppa on varmasti $\le x$,
 %joten $F_X(x)=x/13$ \\
 %Pistetodennäköisyys on peräkkäisten $F_X$-arvojen erotus.
+
+
+
+
+
+
+\pagebreak
+\exercise{2}
+Laatikossa on 3 punaista palloa ja 7 sinistä palloa. Laske odotusarvo $E(X)$, kun
+\begin{enumerate}
+    \item[(a)] $X$ on punaisten pallojen lukumäärä nostettaessa laatikosta 5 palloa ilman takaisinpanoa.
+    \item[(b)] $X$ on punaisten pallojen lukumäärä nostettaessa laatikosta 5 palloa takaisinpanolla.
+    \item[(c)] $X$ on nostojen lukumäärä, kun laatikosta nostetaan palloja yksi kerrallaan ilman takaisinpanoa, kunnes saadaan sininen pallo.
+    \item[(d)] $X$ on nostojen lukumäärä, kun laatikosta nostetaan palloja yksi kerrallaan takaisinpanolla, kunnes saadaan sininen pallo.
+\end{enumerate}
+\emph{Vihje}: Luentokalvoilla on todistettu odotusarvoja diskreeteille jakaumille, joista on hyötyä useimmissa kohdissa.
+
+\begin{kohta}
+
+\item $X$ on punaisten pallojen lukumäärä nostettaessa laatikosta 5 palloa ilman takaisinpanoa.
+
+Tämä on hypergeometrinen: $X\sim \mathrm{Hyperg}(N{=}10,K{=}3,n{=}5)$\\
+Luentomuistiinpanoista: $E(X)=n\cdot \dfrac{K}{N}$
+\[
+E(X)=5\cdot \frac{3}{10}=\frac{3}{2}=1{,}5
+\]
+
+\item $X$ on punaisten pallojen lukumäärä nostettaessa laatikosta 5 palloa takaisinpanolla.
+
+Tää on binomijakauma: $X\sim \mathrm{Bin}(n{=}5,p{=}3/10)$
+\[
+E(X)=np=5\cdot \frac{3}{10}=\frac{3}{2}=1{,}5
+\]
+
+\item $X$ on nostojen lukumäärä, kun laatikosta nostetaan palloja yksi kerrallaan ilman takaisinpanoa, kunnes saadaan sininen pallo.
+
+”Ensimmäisen sinisen” odotettu sijainti negatiivisessa hypergeometrisessä asetelmassa:
+\[
+E(X)=\frac{N+1}{B+1}
+\]
+N on kaikkien pallojen määrä, B sinisten määrä. Tässä N=10, B=7, joten
+\[
+E(X)=\frac{10+1}{7+1}=\frac{11}{8}=1{,}375
+\]
+
+\item $X$ on nostojen lukumäärä, kun laatikosta nostetaan palloja yksi kerrallaan takaisinpanolla, kunnes saadaan sininen pallo.
+
+Tää on diskreetti geometrinen jakauma x \in $\{1,2,\dots\}$ ja onnistumistodennäköisyydellä\\
+$p=P(\text{sininen})=7/10$\\ Luentomuistiinpanoista: $E(X)=1/p$
+\[
+E(X)=\frac{1}{7/10}=\frac{10}{7}\approx 1{,}4286
+\]
+
+\end{kohta}
+
+
+
+
+
+
+
+\pagebreak
+\exercise{3}
+Lautta kulkee salmen yli rannalta A rannalle B säännöllisesti 
+10 minuutin välein ja sille mahtuu 8 autoa. Oletetaan, että rannalle 
+A ei jää yhtään autoa lautan lähtiessä. Oletetaan lisäksi, että seuraavan 
+10 minuutin aikana rantaan A saapuvien autojen lukumäärä on 
+Poisson-jakautunut satunnaismuuttuja odotusarvolla 5. Millä 
+todennäköisyydellä lautta tulee täyteen käydessään seuraavan 
+kerran rannalla A? 
+\vspace{0.4cm}
+
+Lautta kulkee 10min välein ja ottaa 8 autoa. 
+Rannalle A ei jää autoja lautan lähdön hetkellä ja 
+seuraavan 10 minuutin aikana saapuvien autojen lukumäärä 
+on Poisson-jakautunut odotusarvolla $\lambda=5$
+\[
+N \sim \mathrm{Poisson}(5),\qquad P(N=k)=e^{-5}\frac{5^k}{k!},\ k=0,1,2,\dots
+\]
+
+"Lautta tulee täyteen" seuraavalla käynnillä $\iff$ rannalla odottaa vähintään 8 autoa
+\[
+P(\text{täyteen})=P(N\ge 8)=1-\sum_{k=0}^{7} e^{-5}\frac{5^k}{k!}.
+\]
+
+Numeroarvo:\\
+Pythonilla
+\begin{verbatim}
+    >>> import math
+    >>> po = 5
+    >>> print(1 - sum(math.exp(-po) * po**k / math.factorial(k) for k in range(8)))
+    0.13337167407000727
+\end{verbatim}
+Eli:
+\[
+P(N\ge 8)\approx 0{,}13337 \quad (\text{noin }13{,}3\%)
+\]
+
+
+
+
+
+
+
+
+
+\pagebreak
+\exercise{4}
+Osoita, että jos $X\sim\operatorname{Geom}(p)$, niin $E(X)=\dfrac{1-p}{p}$. 
+
+\noindent\emph{Vihje}: Derivoi puolittain geometrisen sarjan kaava $\displaystyle\sum_{k=0}^{\infty}x^{k}=\frac{1}{1-x}$, kun $|x|<1$.
+
+\vspace{0.8cm}
+
+
+\[
+P(X=k)=p(1-p)^k,\qquad k=0,1,2,\dots
+\]
+X on epäonnistumisten lukumäärä ennen ensimmäistä onnistumista\\
+
+Ratkaisu yllä mainitulla vihjeellä:
+geometrisen sarjan kaava on
+\[
+\sum_{k=0}^\infty x^{k}=\frac{1}{1-x}, \text{ kun } |x|<1.
+\]
+Derivoidaan puolittain
+\[
+\sum_{k=1}^\infty k\,x^{k-1}=\frac{1}{(1-x)^2}
+\quad\Rightarrow\quad
+\sum_{k=1}^\infty k\,x^{k}=\frac{x}{(1-x)^2}
+\]
+Sijoitetaan x=1-p\in(0,1)
+\[
+\sum_{k=1}^\infty k(1-p)^k=\frac{1-p}{p^2}
+\]
+Nyt
+\[
+E(X)=\sum_{k=0}^\infty k\,p(1-p)^k
+= p\sum_{k=1}^\infty k(1-p)^k
+= p\cdot \frac{1-p}{p^2}
+= \frac{1-p}{p}
+\]
+
+
+
+
 
 \end{document}
