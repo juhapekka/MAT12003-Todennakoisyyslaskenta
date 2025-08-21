@@ -19,7 +19,7 @@ Heitot on riippumattomat\\
 
 PTNF. Riippumattomuuden vuoksi:
 \[
-F_X(x)=P(X\le x)=P(D\le x,\;K\le x)=P(D\le x)\,P(K\le x).
+F_X(x)=P(X\le x)=P(D\le x,\;K\le x)=P(D\le x)\,P(K\le x)
 \]
 jaetaan tapaukset
 \[
@@ -30,7 +30,7 @@ F_X(x)=
 \end{cases}
 \quad\text{ja }F_X(0)=0
 \]
-pistetodennäköisyysfunktio (ptnf) saadaan erotuksena:
+ptnf saadaan erotuksena:
 \[
 P(X=x)=F_X(x)-F_X(x-1)=
 \begin{cases}
@@ -267,5 +267,46 @@ missä $a>0$ on reaalinen parametri ja $C$ on parametrista $a$ riippuva vakio.
   \]
 \end{kohta}
 
+
+
+
+
+
+
+
+\pagebreak
+\exercise{6}
+Tehdas valmistaa tuotetta, jonka kestoaika kulutuksessa
+on jakaumaltaan Exp$(\lambda)$, $\lambda >0$. Tehtaan johto voi säädellä
+parametria $\lambda$. Mikä $\lambda$:n tulisi olla, jotta todennäköisyys, että
+kestoaika olisi korkeintaan 3 vuotta, olisi vähintään $0{,}5$?\\
+
+
+Eksponenttijakauman kertymäfunktio (Määritelmä 5.9)
+\[
+F_T(t)=P(T\le t)=1-e^{-\lambda t}\quad \mid(t\ge 0)
+\]
+$P(T\le 3)\ge 0{,}5$ antaa
+\[
+1-e^{-3\lambda}\ \ge\ \tfrac12
+\ \Longleftrightarrow\
+e^{-3\lambda}\ \le\ \tfrac12
+\ \Longleftrightarrow\
+-3\lambda\ \le\ \ln\tfrac12
+\ \Longleftrightarrow\
+\lambda\ \ge\ \frac{\ln 2}{3}
+\]
+
+Pythonilla:
+\begin{verbatim}
+    >>> import math
+    >>> print(math.log(2)/3)
+    0.23104906018664842
+\end{verbatim}
+
+Eli riittää valita 
+\[
+\lambda \ge \dfrac{\ln 2}{3}\ \approx 0{,}231
+\]
 
 \end{document}
