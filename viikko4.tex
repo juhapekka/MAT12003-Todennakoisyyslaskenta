@@ -211,4 +211,61 @@ E(X)=\sum_{k=0}^\infty k\,p(1-p)^k
 
 
 
+
+
+\pagebreak
+\exercise{5}
+Olkoon $X$ jatkuva satunnaismuuttuja, jonka tiheysfunktio on 
+$$f(x)=\begin{cases}
+    \frac{C}{x^{3}},\text{ kun }x\ge a,\\
+    0 \text{ muulloin,}
+\end{cases}$$
+missä $a>0$ on reaalinen parametri ja $C$ on parametrista $a$ riippuva vakio. 
+\begin{enumerate}
+    \item[(a)] Määritä vakio $C$. 
+    \item[(b)] Laske $P(X\ge 2a)$
+    \item[(c)] Laske E$(X)$. 
+\end{enumerate}
+
+\vspace{0.4cm}
+
+\begin{comment}
+    
+
+\end{comment}
+
+\begin{kohta}
+  \item \textbf{Määritä vakio $C$.} \\
+  Normalisointi todennäköisyydeki $\int_{-\infty}^{\infty} f(x)\,dx=1$ antaa
+
+  \[
+    \int_a^\infty \frac{C}{x^{3}}\,dx
+    = C\int_a^\infty x^{-3}\,dx
+    = C\,\evalslant{-\frac{1}{2x^{2}}}{a}{\infty}
+    = C\!\left(0-\Big(-\frac{1}{2a^{2}}\Big)\right)
+    = \frac{C}{2a^{2}} = 1
+    \;\Rightarrow\; C=2a^{2}
+  \]
+
+  \item \textbf{Laske $P(X\ge 2a)$}
+  \[
+    P(X\ge 2a)
+    = \int_{2a}^{\infty} \frac{2a^{2}}{x^{3}}\,dx
+    = 2a^{2}\,\evalslant{-\frac{1}{2x^{2}}}{2a}{\infty}
+    = 2a^{2}\!\left(0-\Big(-\frac{1}{8a^{2}}\Big)\right)
+    = \frac{1}{4}
+  \]
+
+  \item \textbf{Laske $E(X)$.}
+  \[
+    E(X)=\int_{a}^{\infty} x\,f(x)\,dx
+    = \int_{a}^{\infty} x\cdot\frac{2a^{2}}{x^{3}}\,dx
+    = 2a^{2}\int_{a}^{\infty} x^{-2}\,dx
+    = 2a^{2}\,\evalslant{-\frac{1}{x}}{a}{\infty}
+    = 2a^{2}\!\left(0-\Big(-\frac{1}{a}\Big)\right)
+    = 2a
+  \]
+\end{kohta}
+
+
 \end{document}

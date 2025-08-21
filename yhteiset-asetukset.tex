@@ -144,3 +144,23 @@ week 6}
 %\korostus{Yksi kirjoittaja on jo sisällä}
 %\korostus[red]{Lukijan täytyy odottaa jos kirjoittajia on paikalla}
 %\korostus[orange]{Tämä osa ei ole suoritettavissa}
+
+
+\newcommand{\evalslantti}[4][-12]{%
+%  \left. #2 \,\right|% ei indeksejä tähän
+  \mkern-10mu\raisebox{0pt}[0pt][0pt]{\rotatebox{#1}{$\Big|$}}% vinoviiva päälle
+  \mkern3mu{}_{\!#3}^{\!#4}% arvot viivan oikealle puolelle
+}
+
+
+
+\newcommand{\evalraise}{1.2ex}
+\newcommand{\evallow}{1.2ex}
+
+% vino eval-viiva, arvot oikealla (oletus: -12)
+% \evalslant[asteet]{lauseke}{ala}{yla}
+\newcommand{\evalslant}[4][-12]{%
+  \left. #2 \,\right.%
+  \mkern-10mu\raisebox{0pt}[0pt][0pt]{\rotatebox{#1}{$\Big|$}}%
+  \mkern2mu{}^{\raisebox{\evalraise}{$\scriptstyle #4$}}_{\raisebox{-\evallow}{$\scriptstyle #3$}}%
+}
