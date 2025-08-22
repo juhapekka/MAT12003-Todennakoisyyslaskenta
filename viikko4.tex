@@ -429,4 +429,62 @@ E(e^X)=e-1
 \]
 
 
+
+
+
+
+\pagebreak
+
+\exercise{9}
+Herra K matkustaa bussilla. Bussin saapumisaika lähtöpysäkille
+on satunnaismuuttuja $X$, joka on tasaisesti jakautunut välillä $(0,5)$
+minuuttia. (Huomaa, että kyseessä on jatkuva jakauma, saapumisaika voi siis 
+olla mikä tahansa reaaliluku tällä välillä.) Sen jälkeen bussimatka kestää
+ajan $Y$, joka on tasaisesti jakautunut välillä $(10,16)$ minuuttia. Perillä
+ollaan siis hetkellä $X+Y$. Herra K:n pitäisi olla töissä viimeistään hetkellä
+20. Kurssisivulta löytyvä R-koodi \texttt{bussisimu.r} simuloi kymmenen kertaa 
+herra K:n matkaa ja töihin ehtimistä. Kokeile koodia, kun olet ensin ladannut 
+sen omalle koneellesi.
+
+Muokkaa koodia seuraavasti:
+\begin{enumerate}
+\item[(1)] Bussimatkan kesto onkin tasaisesti jakautunut välillä $(10,20+k)$,
+missä $k$ on opiskelijanumerosi viimeinen numero (jos esim.\ opiskelijanumerosi
+on 012345678, niin $k=8$. Älä kirjoita opiskelijanumeroasi näkyviin ratkaisuusi!)
+\item[(2)] Bussimatkoja simuloidaankin 10\,000 eikä kymmenen kertaa. Suorita 
+simulaatio ja raportoi vastauksessasi, miten usein herra K ehtii töihin
+(ts.\ simulaatioon perustuva arvio sille, että hän ehtii töihin).
+\end{enumerate}
+
+
+
+
+\textbf{Simulaatio R:llä (\(n=10000\)):}
+{\small
+\begin{verbatim}
+    n <- 10000  # Simuloitujen matkojen lukumäärä
+    k <- 2  # Opiskelijanumeroni viimeinen numero
+
+    # Simuloidaan n bussimatkaa
+    x <- runif(n, 0, 5)  # Arvotaan tasajakaumasta
+    y <- runif(n, 10, 20 + k)  # Arvotaan tasajakaumasta
+    s <- x + y  # Saapumisaika
+
+    # Tutkitaan, millä kerroilla herra K ehti töihin
+    ehti <- (s <= 20)
+    ehti_lkm <- sum(ehti)
+    ehti_osuus <- ehti_lkm / n
+    ehti_osuus
+
+    print(ehti_osuus)
+\end{verbatim}
+}
+
+\textbf{R for Mac OS:}
+\begin{verbatim}
+    > source("~/Downloads/bussisimu.r")
+    [1] 0.6189
+\end{verbatim}
+Eli simulaation mukaan Herra K ehtii töihin 62\% todennäköisyydellä.
+
 \end{document}
