@@ -362,4 +362,71 @@ $Z=\dfrac{X-\mu}{\sigma}\sim N(0,1)$, merkitään $\Phi$ standardinormaalin kert
   = 3{,}03
   \]
 \end{kohta}
+
+
+
+
+
+
+
+
+
+\pagebreak
+\exercise{8}
+Oletetaan, että $X\sim\operatorname{Tas}(0,1)$.
+Johda satunnaismuuttujan $e^X$ tiheys- ja kertymäfunktiot ja laske $E(e^X)$.
+
+\noindent\emph{Vihje}: Aloita kertymäfunktiosta.
+\vspace{0.8cm}
+
+
+$X\sim\mathrm{Tas}(0,1)$ ja asetetaan $Y=e^X$\\
+
+\textbf{Kertymäfunktio}\\
+Koska $e^x$ on aidosti kasvava ja $X\in[0,1]$, saadaan $Y\in(1,e)$ ($e^0=1$ ja $e^1=e$):
+\[
+F_Y(y)=P(Y\le y)=P(e^X\le y)=P\!\big(X\le \ln y\big)=
+\begin{cases}
+0 & y\le 1\\[2pt]
+\ln y & 1<y<e\\[2pt]
+1 & y\ge e
+\end{cases}
+\]
+
+\textbf{Tiheysfunktio}\\
+Derivoidaan $F_Y$:
+\[
+f_Y(y)=F_Y'(y)=
+\begin{cases}
+\dfrac{1}{y} & 1<y<e\\[6pt]
+0 & \text{muulloin}
+\end{cases}
+\]
+
+\textbf{Odotusarvo}\\
+\[
+E(e^X)=E(Y)=\int_{0}^{1} e^x\,dx
+= \evalslant{e^x}{0}{1}
+=e-1
+\]
+
+\textbf{Eli}\\
+\[
+F_Y(y)=
+\begin{cases}
+0& y\le 1\\
+\ln y& 1<y<e\\
+1& y\ge e
+\end{cases}
+\qquad
+f_Y(y)=
+\begin{cases}
+\dfrac{1}{y}& 1<y<e\\
+0& \text{muulloin}
+\end{cases}
+\qquad
+E(e^X)=e-1
+\]
+
+
 \end{document}
