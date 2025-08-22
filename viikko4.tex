@@ -309,4 +309,57 @@ Eli riittää valita
 \lambda \ge \dfrac{\ln 2}{3}\ \approx 0{,}231
 \]
 
+
+
+
+
+
+
+\pagebreak
+\exercise{7}
+Tieosuudella, jossa oli nopeusrajoitus 100 km/h, tutkittiin autojen keskinopeuksia. Tutkimuksen perusteella kyseisellä tieosuudella autojen keskinopeuden odotusarvo oli 97 km/h ja keskihajonta 6 km/h. Oletetaan, että autojen keskinopeus oli normaalijakautunut.
+\begin{enumerate}
+\item[(a)] Millä todennäköisyydellä satunnaisesti valitun auton keskinopeus oli vähintään 90 km/h, mutta alle 100 km/h?
+\item[(b)] Millä todennäköisyydellä satunnaisesti valitun auton keskinopeus oli yli 110 km/h?
+\item[(c)] Mikä on 200 auton otoksessa olevien yli 110 km/h keskinopeudella ajavien autojen lukumäärän odotusarvo?
+\end{enumerate}
+\vspace{0.8cm}
+
+
+Esimerkkiä 5.14 mukaillen:
+\vspace{0.2cm}
+
+Tieosuudella autojen keskinopeus 
+$X\sim N(\mu=97,\ \sigma=6)$ km/h\\
+
+$Z=\dfrac{X-\mu}{\sigma}\sim N(0,1)$, merkitään $\Phi$ standardinormaalin kertymäfunktiota
+
+\begin{kohta}
+  \item $P(90\le X<100)$
+
+  \[
+  P(90\le X<100)=\Phi\!\Big(\frac{100-97}{6}\Big)-\Phi\!\Big(\frac{90-97}{6}\Big)
+  =\Phi(0.5)-\Phi(-7/6)
+  \]
+  Koska $\Phi(-a)=1-\Phi(a)$
+  \[
+  =\Phi(0.5)+\Phi(7/6)-1 \approx 0{,}69146+0{,}87833-1
+  = 0{,}56979
+  \]
+
+  \item $P(X>110)$
+
+  \[
+  P(X>110)=1-\Phi\!\Big(\frac{110-97}{6}\Big)=1-\Phi\!\Big(\frac{13}{6}\Big)
+  \approx 1-\Phi(2{,}1667)=0{,}01513
+  \]
+
+  \item Yli 110 km/h ajavien odotettu lukumäärä 200 auton otoksessa:
+
+  Jos I=$1_{\{X>110\}}$, niin E(I)=P(X>110) ja
+  \[
+  E(\text{lukumäärä})=200\cdot P(X>110)\approx 200\cdot 0{,}01513
+  = 3{,}03
+  \]
+\end{kohta}
 \end{document}
