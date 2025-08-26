@@ -41,4 +41,57 @@ Varianssi (sijoitetaan suoraan vaan määritelmään 6.8):
 =\frac{3}{4}\,a^2
 \]
 
+
+
+
+
+
+\pagebreak
+\exercise{2}
+Olkoot $X$, $Y$ ja $Z$
+riippumattomia satunnaismuuttujia, joilla kaikilla on sama odotusarvo $\mu$ ja
+varianssi $\sigma^2$. Laske odotusarvo ja varianssi
+satunnaismuuttujille (a) $X+2Y+3Z$, (b) $X-Y$, (c) $XY$.
+
+\begin{kohta}
+
+\item $X+2Y+3Z$
+\[
+\begin{aligned}
+    E(X+2Y+3Z) &=\mu+2\mu+3\mu=6\mu \\
+    \Var(X+2Y+3Z) &=\sigma^2+4\sigma^2+9\sigma^2=14\sigma^2
+\end{aligned}
+\]
+
+\item $X-Y$
+\[
+\begin{aligned}    
+E(X-Y)&=\mu-\mu=0 \\
+\text{käytetään Huomautus 6.22 ja Lause 6.23:}\\
+\Var(X-Y)&=\sigma^2+\sigma^2=2\sigma^2
+\end{aligned}
+\]
+
+\item $XY$ \\
+ (Esimerkki 6.25 ii)
+\[
+E(XY)=E(X)E(Y)=\mu^2
+\]
+Sitten: \\
+$E(X^2)=\Var(X)+[E(X)]^2=\sigma^2+\mu^2$\\
+ja: \\
+ $E(Y^2)=\sigma^2+\mu^2$\\
+joten
+\[
+\begin{aligned}
+\Var(XY)&=E(X^2Y^2)-[E(XY)]^2\\
+&=E(X^2)E(Y^2)-\mu^4\\
+&=(\sigma^2+\mu^2)^2-\mu^4\\
+&=\sigma^4+2\sigma^2\mu^2
+\end{aligned}
+\]
+
+\end{kohta}
+
+
 \end{document}
