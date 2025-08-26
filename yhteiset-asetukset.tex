@@ -153,7 +153,6 @@ week 6}
 }
 
 
-
 \newcommand{\evalraise}{1.2ex}
 \newcommand{\evallow}{1.2ex}
 
@@ -163,4 +162,16 @@ week 6}
   \left. #2 \,\right.%
   \mkern-10mu\raisebox{0pt}[0pt][0pt]{\rotatebox{#1}{$\Big|$}}%
   \mkern2mu{}^{\raisebox{\evalraise}{$\scriptstyle #4$}}_{\raisebox{-\evallow}{$\scriptstyle #3$}}%
+}
+
+
+
+% vino eval-viiva ENNEN lauseketta
+% \evalslantpre[asteet]{lauseke}{ala}{yla}
+\newcommand{\evalslantpre}[4][-12]{%
+  % viiva ja rajat
+  \raisebox{0pt}[0pt][0pt]{\rotatebox{#1}{$\Big|$}}%
+  \mkern2mu{}^{\raisebox{\evalraise}{$\scriptstyle #4$}}_{\raisebox{-\evallow}{$\scriptstyle #3$}}%
+  % itse lauseke
+  \mkern4mu\left. #2 \right.%
 }

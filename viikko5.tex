@@ -9,6 +9,36 @@
 \maketitle
 
 \exercise{1}
+Olkoon $X$ jatkuva satunnaismuuttuja, jonka tiheysfunktio on 
+$$f(x)=\begin{cases}
+    \frac{3a^3}{x^{4}},\text{ kun }x\ge a,\\
+    0 \text{ muulloin,}
+\end{cases}$$
+missä $a>0$ on reaalinen parametri. Laske Var$(X)$.
 
+\vspace{0.4cm}
+
+
+Odotusarvot:
+\[
+E(X)=\int_a^\infty x\,f(x)\,dx
+=3a^3\int_a^\infty x^{-3}\,dx
+=3a^3\,\evalslantpre{-\frac{1}{2}x^{-2}}{a}{\infty}
+=\frac{3}{2}\,a
+\]
+\[
+E(X^2)=\int_a^\infty x^2\,f(x)\,dx
+=3a^3\int_a^\infty x^{-2}\,dx
+=3a^3\,\evalslantpre{-x^{-1}}{a}{\infty}
+=3a^2
+\]
+\vspace{0.4cm}
+
+Varianssi (sijoitetaan suoraan vaan määritelmään 6.8):
+\[
+\operatorname{Var}(X)=E(X^2)-\big(E(X)\big)^2
+=3a^2-\Big(\tfrac{3}{2}a\Big)^2
+=\frac{3}{4}\,a^2
+\]
 
 \end{document}
