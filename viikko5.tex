@@ -94,4 +94,53 @@ joten
 \end{kohta}
 
 
+
+
+
+\pagebreak
+\exercise{3}
+Tasoon piirretään kolmio, jonka kärkinä ovat origo
+sekä $x$- ja $y$-akselilta satunnaisesti valitut pisteet $X$ ja $Y$,
+jotka ovat riippumattomia ja noudattavat normaalijakaumaa parametrein
+$(0, 1)$. Laske kolmion pinta-alan odotusarvo.
+\vspace{0.4cm}
+
+eli kolmio millä kärjet (0,0), (X,0) ja (0,Y), missä X\sim N(0,1) ja 
+Y\sim N(0,1) riippumattomia ja kolmion pinta-ala on
+\[
+A=\frac{|X||Y|}{2}
+\]
+Riippumattomuudesta seuraa E[|X|\,|Y|]=E[|X|]\,E[|Y|] ja koska X ja Y on
+samanlaisia merkitään E[|X|]\,=\,E[|Y|] ja 
+E[|X|]\,=\,E[|Y|]\,=\,E[|Z|] kun Z\sim N(0,1) jolloin voidaan kirjoittaa
+
+
+\[
+E[A]=\frac{E[|X|]E[|Y|]}2
+=\frac{\bigl(E[|Z|]\bigr)^2}2
+\]
+ja lasketaan \(E[|Z|]\) (Luento09\_handout lause 5 todistusta apuna käyttäen)
+\[
+\begin{aligned}
+E[|Z|]
+&= 2\int_{0}^{\infty} x\;\frac{1}{\sqrt{2\pi}}\,e^\frac{-x^{2}}2\,dx
+= \frac{2}{\sqrt{2\pi}}\int_{0}^{\infty} x\,e^\frac{-x^{2}}2\,dx\\[4pt]
+&= \frac{2}{\sqrt{2\pi}}\;\evalslantpre{-e^\frac{-x^{2}}2}{0}{\infty}
+= \frac{2}{\sqrt{2\pi}}\,(0-(-1))
+= \sqrt{\frac{2}{\pi}}
+\end{aligned}
+\]
+
+Siis
+\[
+E[A]
+=\frac{\bigl(E[|Z|]\bigr)^2}2
+=\frac{\left(\sqrt{\frac{2}{\pi}}\right)^{2}}2
+=\frac{1}{\pi}\approx 0{,}31831
+\]
+
+
+
+
+
 \end{document}
