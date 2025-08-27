@@ -143,4 +143,58 @@ E[A]
 
 
 
+
+\pagebreak
+\exercise{4}
+\begin{enumerate}
+    \item [(a)] Todista luentomonisteen Lause 6.20: Olkoot $X$ ja $Y$ satunnaismuuttujia, joiden toiset momentit ovat äärellisiä. Tällöin
+$\operatorname{Cov}(X,Y)=E(XY)-E(X)E(Y)$.
+    \item[(b)] Todista luentomonisteen Lauseen 6.19 kohta (iii): Jos $X$ ja $Y$ ovat 
+satunnaismuuttujia, joilla on äärelliset toiset momentit, niin
+$\operatorname{Cov}(aX,Y)=a\operatorname{Cov}(X,Y)$, kun $a \in \mathbb{R}$.
+\end{enumerate}
+
+
+\begin{kohta}
+  \item Todista luentomonisteen Lause 6.20: Olkoot $X$ ja $Y$ satunnaismuuttujia, joiden toiset momentit ovat äärellisiä. Tällöin
+$\operatorname{Cov}(X,Y)=E(XY)-E(X)E(Y)$. (mulla tuo oli \emph{Lause 6.19})
+  \[
+    \operatorname{Cov}(X,Y)=E(XY)-E(X)\,E(Y)
+  \]
+  \textit{Todistus.} Määritelmä 6.17 mukaan
+  \[
+    \operatorname{Cov}(X,Y)=E\big[(X-E(X))(Y-E(Y))\big]
+  \]
+  Avataan tulo
+  \[
+  \begin{aligned}
+    \operatorname{Cov}(X,Y)
+    &= E(XY) - E\!\big(X\,E(Y)\big) - E\!\big(E(X)\,Y\big) + E\!\big(E(X)\,E(Y)\big)\\
+    &= E(XY) - E(Y)\,E(X) - E(X)\,E(Y) + E(X)\,E(Y)\\
+    &= E(XY) - E(X)\,E(Y)
+  \end{aligned}
+  \]
+
+  \item Todista luentomonisteen Lauseen 6.19 kohta (iii): Jos $X$ ja $Y$ ovat 
+satunnaismuuttujia, joilla on äärelliset toiset momentit, niin
+$\operatorname{Cov}(aX,Y)=a\operatorname{Cov}(X,Y)$, kun $a \in \mathbb{R}$.
+(mun materiaaleissa tää oli \linebreak\emph{Lause 6.18 kohta iii})
+  
+  %\textbf{(Lause 6.19 (iii))} Jos $a\in\mathbb{R}$, niin
+  \[
+    \operatorname{Cov}(aX,Y)=a\,\operatorname{Cov}(X,Y)
+  \]
+  \textit{Todistus.} Käytetään määritelmää 6.17 ja lausetta 6.1 (ii)
+  \[
+  \begin{aligned}
+    \operatorname{Cov}(aX,Y)
+    &= E\big[(aX-E(aX))(Y-E(Y))\big]\\
+    &= E\big[(aX-a\,E(X))(Y-E(Y))\big]\\
+    &= a\,E\big[(X-E(X))(Y-E(Y))\big]
+     = a\,\operatorname{Cov}(X,Y)
+  \end{aligned}
+  \]
+\end{kohta}
+
+
 \end{document}
