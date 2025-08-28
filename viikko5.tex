@@ -285,4 +285,69 @@ P(S=3)=\frac{2}{16}=\frac18,\qquad
 P(S=3\mid X=1)=P(|1-Y|=3)=P(Y=4)=\frac14\neq \frac18.
 \]
 Eli X ja S ovat korreloimattomia. Mutta X ja S ovat riippuvaisia.
+
+
+\pagebreak
+\exercise{6}
+Korttipakasta nostetaan kortti (takaisin panolla) 320 kertaa. Olkoon $X$ nostettujen herttojen lukumäärä. Arvioi todennäköisyyttä $P(X>100)$ Markovin ja T\v seby\v sevin epäyhtälöillä. (Voit halutessasi laskea myös todennäköisyyden tarkan arvon, esimerkiksi ohjelmistolla, ja verrata arvioita siihen.)
+
+\vspace{0.4cm}
+
+Koska nostot tehdään takaisinpanolla ja hertan todennäköisyys on $p=\tfrac{13}{52}=\tfrac14$, saadaan
+\[
+X\sim\mathrm{Bin}(n=320,\ p=\tfrac14),\qquad
+E(X)=np=80,\quad
+\mathrm{Var}(X)=np(1-p)=60
+\]
+
+\begin{kohta}
+  \item Markovin epäyhtälö (Lause 7.1)\\
+  ei-negatiiviselle $X$:lle ja $a>0$ pätee
+  \[
+  \begin{aligned}
+  &P(X\ge a)\le \frac{E(X)}{a}\\
+  \Rightarrow \quad &P(X> 100)\le \frac{80}{100}=0{,}80
+  \end{aligned}
+  \]
+
+
+\item T\v{s}eby\v{s}evin epäyhtälö (Lause 7.2)\\
+
+
+\[
+\mu=E(X)=np=80,\qquad \sigma^2=\Var(X)=np(1-p)=60,\quad \sigma=\sqrt{60}
+\]
+
+Etsitään siis $P(X>100)$ \\
+$X>100 \;\Rightarrow\; X-\mu > 100-80 = 20 \;\Rightarrow\; |X-\mu|\ge 20$
+\[
+P(X>100)\ \le\ P(|X-\mu|\ge 20)
+\]
+T\v{s}eby\v{s}evin epäyhtälön mukaan kaikilla $k>0$ pätee
+\[
+P(|X-\mu|\ge k\sigma)\ \le\ \frac{1}{k^2}
+\]
+Valitaan\\
+\[
+k=\dfrac{20}{\sigma}=\dfrac{20}{\sqrt{60}}
+\]
+Tällöin
+\[
+P(X>100)\ \le\ P(|X-\mu|\ge 20)
+\ \le\ \frac{1}{k^2}
+\ =\ \frac{\sigma^2}{20^2}
+\ =\ \frac{60}{400}
+\ =\ \frac{3}{20}
+\ =\ 0{,}15
+\]
+
+\end{kohta}
+
+\textbf{Pythonilla todennäköisyyden tarkka arvo:}
+\begin{verbatim}
+    >>> import scipy
+    >>> print(1 - scipy.stats.binom.cdf(100, 320, 0.25))
+    0.0047979316937751815
+\end{verbatim}
+
 \end{document}
