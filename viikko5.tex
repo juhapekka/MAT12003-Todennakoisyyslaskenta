@@ -110,19 +110,19 @@ Y\sim N(0,1) riippumattomia ja kolmion pinta-ala on
 \[
 A=\frac{|X||Y|}{2}
 \]
-Riippumattomuudesta seuraa E[|X|\,|Y|]=E[|X|]\,E[|Y|] ja koska X ja Y on
-samanlaisia merkitään E[|X|]\,=\,E[|Y|] ja 
-E[|X|]\,=\,E[|Y|]\,=\,E[|Z|] kun Z\sim N(0,1) jolloin voidaan kirjoittaa
+Riippumattomuudesta seuraa E(|X|\,|Y|)=E(|X|)\,E(|Y|) ja koska X ja Y on
+samanlaisia merkitään E(|X|)\,=\,E(|Y|) ja 
+E(|X|)\,=\,E(|Y|)\,=\,E(|Z|) kun Z\sim N(0,1) jolloin voidaan kirjoittaa
 
 
 \[
-E[A]=\frac{E[|X|]E[|Y|]}2
-=\frac{\bigl(E[|Z|]\bigr)^2}2
+E(A)=\frac{E(|X|]E[|Y|)}2
+=\frac{\bigl(E(|Z|)\bigr)^2}2
 \]
-ja lasketaan \(E[|Z|]\) (Luento09\_handout lause 5 todistusta apuna käyttäen)
+ja lasketaan \(E(|Z|)\) (Luento09\_handout lause 5 todistusta apuna käyttäen)
 \[
 \begin{aligned}
-E[|Z|]
+E(|Z|)
 &= 2\int_{0}^{\infty} x\;\frac{1}{\sqrt{2\pi}}\,e^\frac{-x^{2}}2\,dx
 = \frac{2}{\sqrt{2\pi}}\int_{0}^{\infty} x\,e^\frac{-x^{2}}2\,dx\\[4pt]
 &= \frac{2}{\sqrt{2\pi}}\;\evalslantpre{-e^\frac{-x^{2}}2}{0}{\infty}
@@ -133,8 +133,8 @@ E[|Z|]
 
 Siis
 \[
-E[A]
-=\frac{\bigl(E[|Z|]\bigr)^2}2
+E(A)
+=\frac{\bigl(E(|Z|)\bigr)^2}2
 =\frac{\left(\sqrt{\frac{2}{\pi}}\right)^{2}}2
 =\frac{1}{\pi}\approx 0{,}31831
 \]
@@ -188,13 +188,101 @@ $\operatorname{Cov}(aX,Y)=a\operatorname{Cov}(X,Y)$, kun $a \in \mathbb{R}$.
   \[
   \begin{aligned}
     \operatorname{Cov}(aX,Y)
-    &= E\big[(aX-E(aX))(Y-E(Y))\big]\\
-    &= E\big[(aX-a\,E(X))(Y-E(Y))\big]\\
-    &= a\,E\big[(X-E(X))(Y-E(Y))\big]
+    &= E\big((aX-E(aX))(Y-E(Y))\big)\\
+    &= E\big((aX-a\,E(X))(Y-E(Y))\big)\\
+    &= a\,E\big((X-E(X))(Y-E(Y))\big)
      = a\,\operatorname{Cov}(X,Y)
   \end{aligned}
   \]
 \end{kohta}
 
 
+
+
+
+\pagebreak
+
+\exercise{5}
+Heitetään kahta 4-sivuista noppaa (jossa silmäluvut 1, 2, 3, 4 ovat yhtä todennäköiset).
+Olkoon heittojen tulokset $X$ ja $Y$, ja $S=|X-Y|$. Laske Cov$(X,S)$ ja Corr$(X,S)$. Voitko päätellä tuloksista jotain satunnaismuuttujien $X$ ja $S$ riippuvuudesta?
+
+\vspace{0.4cm}
+
+
+Ensin S:n ptnf, odotusarvo ja toinen momentti:\\
+Mahdollisia pareja on 16. \\
+
+Erotuksen itseisarvon lukumäärät:
+\[
+\#\{(x,y):|x-y|=s\}=
+\begin{array}{c|cccc}
+s&0&1&2&3\\\hline
+\#&4&6&4&2
+\end{array}
+\quad\Rightarrow\quad
+P(S=s)=\frac{\#}{16}
+\]
+Tästä saadaan
+\[
+\begin{aligned}
+E(S)&=\frac{0\cdot4+1\cdot6+2\cdot4+3\cdot2}{16}=\frac{20}{16}=\frac54\\
+E(S^2)&=\frac{0^2\cdot4+1^2\cdot6+2^2\cdot4+3^2\cdot2}{16}=\frac{40}{16}=\frac52\\
+\Var(S)&=E(S^2)-E(S)^2=\frac52-\Big(\frac54\Big)^2=\frac{15}{16}
+\end{aligned}
+\]
+
+\vspace{0.4cm}
+
+Seuraavaksi samat X:lle\\
+Koska $X\sim\mathrm{Tas}\{1,2,3,4\}$
+\[
+\begin{aligned}
+E(X)&=\frac{1+2+3+4}{4}=\frac52\\
+E(X^2)&=\frac{1^2+2^2+3^2+4^2}{4}=\frac{15}{2}\\
+\Var(X)&=E(X^2)-E(X)^2=\frac{5}{4}
+\end{aligned}
+\]
+\vspace{0.4cm}
+
+Sitten lasketaan $E(S\mid X=x)$ (keskiarvo $Y\in\{1,2,3,4\}$):
+\[
+\begin{aligned}
+E(S\mid X=1)&=\frac14\,(|1-1|+|1-2|+|1-3|+|1-4|)=\frac14(0+1+2+3)=\tfrac32\\
+E(S\mid X=2)&=\frac14\,(|2-1|+|2-2|+|2-3|+|2-4|)=\frac14(1+0+1+2)=1\\
+E(S\mid X=3)&=\frac14\,(|3-1|+|3-2|+|3-3|+|3-4|)=\frac14(2+1+0+1)=1\\
+E(S\mid X=4)&=\frac14\,(|4-1|+|4-2|+|4-3|+|4-4|)=\frac14(3+2+1+0)=\tfrac32
+\end{aligned}
+\]
+josta
+\[
+E(XS)=E\big(X\,E(S\mid X)\big)
+=\frac14\!\left(1\cdot\tfrac32+2\cdot 1+3\cdot 1+4\cdot\tfrac32\right)
+=\frac{25}{8}
+\]
+
+
+
+
+\pagebreak
+nyt on kaikki kovarianssia (Määritelmä 6.17) ja sitten korrelaatiota (Määritelmä 6.20) varten:
+\[
+\Cov(X,S)=E(XS)-E(X)E(S)
+=\frac{25}{8}-\frac52\cdot\frac54=0
+\]
+\[
+\Corr(X,S)=\frac{\Cov(X,S)}{\sqrt{\Var(X)\Var(S)}}=0
+\]
+
+\vspace{0.8cm}
+
+\textbf{päätelmä tuloksista satunnaismuuttujien X ja S riippuvuudesta}\\
+
+Vaikka $\Corr(X,S)=0$, muuttujat eivät ole riippumattomia (Huomautus 6.22).\\
+
+Esimerkiksi
+\[
+P(S=3)=\frac{2}{16}=\frac18,\qquad
+P(S=3\mid X=1)=P(|1-Y|=3)=P(Y=4)=\frac14\neq \frac18.
+\]
+Eli X ja S ovat korreloimattomia. Mutta X ja S ovat riippuvaisia.
 \end{document}
