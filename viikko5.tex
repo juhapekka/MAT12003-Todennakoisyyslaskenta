@@ -116,7 +116,7 @@ E(|X|)\,=\,E(|Y|)\,=\,E(|Z|) kun Z\sim N(0,1) jolloin voidaan kirjoittaa
 
 
 \[
-E(A)=\frac{E(|X|]E[|Y|)}2
+E(A)=\frac{E(|X|)E(|Y|)}2
 =\frac{\bigl(E(|Z|)\bigr)^2}2
 \]
 ja lasketaan \(E(|Z|)\) (Luento09\_handout lause 5 todistusta apuna käyttäen)
@@ -282,7 +282,7 @@ Vaikka $\Corr(X,S)=0$, muuttujat eivät ole riippumattomia (Huomautus 6.22).\\
 Esimerkiksi
 \[
 P(S=3)=\frac{2}{16}=\frac18,\qquad
-P(S=3\mid X=1)=P(|1-Y|=3)=P(Y=4)=\frac14\neq \frac18.
+P(S=3\mid X=1)=P(|1-Y|=3)=P(Y=4)=\frac14\neq \frac18
 \]
 Eli X ja S ovat korreloimattomia. Mutta X ja S ovat riippuvaisia.
 
@@ -356,7 +356,9 @@ P(X>100)\ \le\ P(|X-\mu|\ge 20)
 \pagebreak
 
 \exercise{7}
-Olkoon ${X_1, X_2,\ldots, X_{100}}$ otos jakaumasta Tas$(-1,1)$ ja $X=\sum_{k=1}^{100} X_k$. Määritä normaaliapproksimaatiolla likiarvo todennäköisyydelle $P(X>5)$.
+Olkoon ${X_1, X_2,\ldots, X_{100}}$ otos jakaumasta Tas$(-1,1)$ ja $X=\sum_{k=1}^{100} X_k$. Määritä normaaliapproksimaatiolla likiarvo todennäköisyydelle $P(X>5)$.\\
+
+Vastaus: $0{,}193$.
 \vspace{0.4cm}
 
 Tasajakaumalle $\mathrm{Tas}(a,b)$ pätee (Esimerkki 5.16, Esimerkki 6.13)
@@ -386,4 +388,164 @@ P(X>5)\ \approx\ P\!\left(
 \]
 
 Siis \(P(X>5)\approx 0{,}193\) normaaliapproksimaatiolla
+
+
+
+
+
+\pagebreak
+\exercise{8}
+Asiakkaan ostosten summa pyöristetään lähimpään 5 senttiin. Yhden asiakkaan pyöristys-virheestä liikkeenharjoittajalle koituva tappio on satunnaismuuttuja, joka saa arvot $-2$, $-1$, $0$, $1$, $2$ (yksikkönä sentti) kunkin todennäköisyydellä $\frac{1}{5}$. Olkoon $X$ 10 000 asiakkaan aiheuttama kokonaistappio. Laske normaaliapproksimaatiolla (jatkuvuuskorjausta käyttäen) todennäköisyyden $P(X>2\text{ EUR})$ kolmidesimaalinen likiarvo. \\
+
+Vastaus: 0{,}078.\\
+
+
+\medskip
+Merkitään yhden asiakkaan tappiota T:llä.
+\[
+P(T=t)=\tfrac15,\qquad t\in\{-2,-1,0,1,2\}
+\]
+Odotusarvo ja varianssi:
+\[
+E(T)=\tfrac15(-2-1+0+1+2)=0,\qquad
+E(T^2)=\tfrac15(4+1+0+1+4)=2\ \Rightarrow\ \Var(T)=2
+\]
+Olkoot $T_1,...,T_{10000}$ riippumattomia kuten $T$ ja $X=\sum_{i=1}^{10000}T_i$\\
+Tällöin
+\[
+E(X)=10000\cdot 0=0,\qquad
+\Var(X)=10000\cdot 2=20000,\qquad
+\sigma_X=\sqrt{20000}=100\sqrt2
+\]
+\vspace{0.4cm}
+
+Halutaan että $P(X>200)$ koska 2 EUR on 200 senttiä.\\
+Käytetään normaaliapproksimaatiota
+jatkuvuuskorjauksella (5.1.3 Normaalijakauma ja Esimerkki 5.14)
+\[
+P(X>200)\approx P\bigl(N>201\bigr),\quad N\sim N\!\bigl(0,\,20000\bigr)
+\]
+Stnadardoiden saadaan
+\[
+\begin{aligned}
+z=\frac{201-0}{100\sqrt2}=\frac{201}{100\sqrt2}\approx 1.421\\
+P(X>200)\approx 1-\Phi(z)\approx 1-\Phi(1.421)\approx 0.078
+\end{aligned}
+\]
+\vspace{0.4cm}
+
+\[
+P(X>2\text{ EUR})\approx 0{,}078
+\]
+
+
+
+
+\pagebreak
+\exercise{9}
+\textbf{(R-tehtävä)}\\
+\begin{kohta}
+\item 
+Seuraava R-koodi arpoo $n$ riippumatonta 
+(pseudo)satunnaislukua väliltä $(0,1)$, kertoo ne (kunkin erikseen)
+luvulla $(b-a)$ ja lisää sitten luvun $a$. Näin syntyneistä luvuista
+piirretään histogrammi. Kokeile koodia lukuarvoilla $n=10^6$, $a=15$,
+$b=20$. Tutki, vastaako saatu histogrammi luentomonisteen Esimerkin 8.3 
+(eli alla esitetyn lauseen) antamia 
+odotuksia, ts.\ ovatko muunnetut luvut tasajakautuneet ja jos ovat,
+niin millä välillä.
+
+
+\begin{verbatim}
+# Parametrit
+n <- 1e6
+a <- 15
+b <- 20
+
+x <- runif(n)
+y <- (b - a) * x + a
+hist(y)
+\end{verbatim}
+
+\paragraph{Teoria (vrt.\ Esimerkki 8.3).}
+Olkoon $X\sim\operatorname{Tas}(0,1)$ ja $Y=(b-a)X+a$ missä a < b\\ 
+Koska X on jatkuva, lasketaan ensin kertymäfunktio:
+\[
+F_Y(y)=P(Y\le y)=P\bigl((b-a)X+a\le y\bigr)
+= P\!\left(X\le \frac{y-a}{\,b-a\,}\right)
+\]
+Koska $F_X(x)=x$ välillä 0 < x < 1 saadaan
+\[
+F_Y(y)=
+\begin{cases}
+0, &\mid y\le a\\[4pt]
+\dfrac{y-a}{\,b-a\,} &\mid a<y<b\\[8pt]
+1 &\mid y\ge b
+\end{cases}
+\]
+Derivoimalla saadaan tiheys
+\[
+f_Y(y)=F_Y'(y)=
+\begin{cases}
+\dfrac{1}{\,b-a\,} & a<y<b\\[6pt]
+0 & \text{muulloin}
+\end{cases}
+\]
+Siis $Y\sim\operatorname{Tas}(a,b)$
+
+\begin{comment}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.3\textwidth]{viikko5tehtävä9.jpg}
+  \caption{lineaarimuunnos Tas(0,1) -> Tas(a,b)}
+\end{figure}
+    
+\end{comment}
+
+
+
+\pagebreak
+\item Muokkaa koodia siten, että muunnosfunktio onkin \texttt{y =
+-log(x)} (R:ssä pelkkä \texttt{log(x)} tarkoittaa luonnollista logaritmia).
+Aja koodi ja tutki histogrammia.\\[6pt]
+Vertaa muotoa eksponenttijakauman Exp(1) tiheysfunktioon.\\[6pt]
+Vertaa vielä esim.\ tapahtuman $Y\leq 2$ suhteellista frekvenssiä
+(\texttt{sum(y<=2)/n}) kyseisen tapahtuman todennäköisyyteen, jos
+$Y\sim\operatorname{Exp}(1)$.
+
+\begin{verbatim}
+n <- 1e6
+x <- runif(n)
+y <- -log(x)
+
+hist(y, breaks=120, freq=FALSE)
+curve(dexp(x, rate=1), add=TRUE, lwd=2)
+
+# empiirinen P(Y <= 2) ja teoreettinen vertailuarvo
+mean(y <= 2)        # [1] 0.865345
+pexp(2, rate = 1)   # [1] 0.8646647
+\end{verbatim}
+
+\textit{Kommentti.} Koska $X\sim\mathrm{Tas}(0,1)$ ja $Y=-\log X$, niin $y\ge0$:
+\[
+F_Y(y)=P(Y\le y)=P(-\log X\le y)=P\!\big(X\ge e^{-y}\big)
+=1-e^{-y}
+\]
+Derivoimalla $f_Y(y)=e^{-y},\ y\ge0$, joten $Y\sim\mathrm{Exp}(1)$.
+Teoreettinen arvo on siis
+\[
+P(Y\le 2)=F_Y(2)=1-e^{-2}\approx 0.8647
+\]
+Simulaatiossa mean(y <= 2) tuottaa hyvin lähellä olevan luvun, ja
+hist(y) mukailee piirrettyä dexp käyrää.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.8\textwidth]{viikko5tehtävä9.jpg}
+  \caption{Y = -log(X)}
+\end{figure}
+
+\end{kohta}
+
+
 \end{document}
